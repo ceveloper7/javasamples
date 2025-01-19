@@ -12,6 +12,7 @@
         <module>corevol1</module>
         <module>com.ceva.code.utils</module>
         <module>junit-in-action</module>
+        <module>debugging</module>
     </modules>
 
     <properties>

@@ -1,10 +1,8 @@
-package com.ceva.ch01.streams;
+package com.ceva.ch01.createAndTransformStreams;
 
 import java.io.*;
-import java.nio.file.*;
 import java.text.*;
 import java.util.*;
-import java.util.regex.Pattern;
 import java.util.stream.*;
 
 public class CFilterMapDemo {

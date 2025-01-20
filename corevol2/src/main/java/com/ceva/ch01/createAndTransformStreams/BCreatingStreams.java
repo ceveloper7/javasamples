@@ -1,4 +1,4 @@
-package com.ceva.ch01.streams;
+package com.ceva.ch01.createAndTransformStreams;
 
 import java.io.File;
 import java.io.IOException;

@@ -43,6 +43,65 @@ public class OptionalTest {
                 .anyMatch((word)-> word.startsWith("X"));
         System.out.println("is there a word who start with X: " + aWordStartWithX);
 
-        
+        // get an Optional value
+        Optional<String> optionalString = Optional.empty();
+        // Si no hay valor presente, obtenemos N/A
+        String result = optionalString.orElse("N/A");
+        System.out.println("result " + result);
+
+        // orElseGet() lambda function solo se llama cuando se necesite
+        result = optionalString.orElseGet(() -> Locale.getDefault().getDisplayName());
+        System.out.println("Result: " + result);
+
+        // lanzamos una excepcion si no hay valor
+        try{
+            result = optionalString.orElseThrow(IllegalStateException::new);
+            System.out.println("result: " + result);
+        }
+        catch (Throwable t){
+            t.printStackTrace();
+        }
+
+        // Consumiendo un valor Optional.
+        optionalValue = wordList.stream()
+                .filter((word) -> word.contains("red"))
+                .findFirst();
+        optionalValue.ifPresent((value)-> System.out.println(value + " contains red"));
+
+        // Agregamos el valor al set
+        var results = new HashSet<String>();
+        optionalValue.ifPresent(results::add);
+
+        // si Optional tiene un valor hacemos una accion, si no posee valor hacemos otra accion
+        optionalValue.ifPresentOrElse(
+                (value)-> System.out.println("value found: " + value),
+                () -> System.out.println("value not found")
+        );
+
+        Optional<Boolean> added = optionalValue.map(results::add);
+        System.out.println(added);
+
+        // Componiendo funciones de valor Option con flatMap
+        System.out.println(inverse(4.0).flatMap(OptionalTest::squareRoot));
+        System.out.println(inverse(-1.0).flatMap(OptionalTest::squareRoot));
+        System.out.println(inverse(0.0).flatMap(OptionalTest::squareRoot));
+
+        // chain functions
+        Optional<Double> result2 = Optional.of(16.0)
+                .flatMap(OptionalTest::inverse)
+                .flatMap(OptionalTest::squareRoot);
+        System.out.println(result2);
+
+
+    }
+
+    // Metodo que retorna un objeto de tipo Optional
+    public static Optional<Double> inverse(Double x){
+        return x == 0 ? Optional.empty() : Optional.of(1 / x);
+    }
+
+    public static Optional<Double> squareRoot(Double x)
+    {
+        return x < 0 ? Optional.empty() : Optional.of(Math.sqrt(x));
     }
 }

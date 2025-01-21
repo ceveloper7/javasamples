@@ -2,7 +2,15 @@ package com.ceva.ch03.fundamentals;
 
 public class A_String {
     public static void main(String[] args) {
-        textBlocks();
+        scapeSequence();
+    }
+
+    private static void scapeSequence(){
+        System.out.println(
+                "START\nRoses are red,\n\tViolets are blue, \n" +
+                "Sugar is sweet,\n\tBut I have \"commitment issue\", \n\t" +
+                "So I'd rather just be friends\n\tAt this point in our relationship\n" +
+                "END.");
     }
 
     private static void textBlocks(){

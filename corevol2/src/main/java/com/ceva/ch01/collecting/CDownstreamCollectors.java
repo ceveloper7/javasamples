@@ -72,6 +72,17 @@ public class CDownstreamCollectors {
                 .collect(groupingBy(City::state, summarizingInt(City::population)));
         System.out.println(stateToCityPopulationSummary.get("NY"));
 
+//        cities = getCities();
+//        Map<String, String> stateToCityNames = cities.collect(
+//                groupingBy(City::state,
+//                        reducing("", City::name, (s, t) -> s.length() == 0 ? t : s + ", " + t)));
+
+
+        cities = getCities();
+        Map<String, String> stateToCityNames = cities.collect(groupingBy(City::state,
+                mapping(City::name, joining(", "))));
+        System.out.println("stateToCityNames: " + stateToCityNames);
+
         // doing more than one computation over stream with teeing
         cities = getCities();
         Pair<List<String>, Double> result = cities.filter(c -> c.state().equals("NV"))

@@ -1,4 +1,4 @@
-package com.ceva.ch02.ATextFile;
+package com.ceva.ch02.textFile;
 
 import java.io.FileInputStream;
 import java.io.IOException;

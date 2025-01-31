@@ -26,7 +26,9 @@ public class RegexTest {
             String input = in.nextLine();
             if (input == null || input.equals(""))
                 return;
+            // encontramos todas las coincidencias  en un String
             Matcher matcher = pattern.matcher(input);
+            // evaluamos que el input se conforme al patron
             if (matcher.matches())
             {
                 System.out.println("Match");

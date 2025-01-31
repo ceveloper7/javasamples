@@ -31,6 +31,7 @@ public class HrefMatch {
             // search for all occurrences of pattern
             String patternString = "<a\\s+href\\s*=\\s*(\"[^\"]*\"|[^\\s>]*)\\s*>";
             Pattern pattern = Pattern.compile(patternString, Pattern.CASE_INSENSITIVE);
+            // recibimos un Stream<MatchResult>
             pattern.matcher(input).results().map(MatchResult::group).forEach(System.out::println);
         } catch (IOException | PatternSyntaxException e)
         {

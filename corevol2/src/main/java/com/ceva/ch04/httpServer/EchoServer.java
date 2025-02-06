@@ -9,6 +9,8 @@ import com.sun.net.httpserver.*;
 
 /**
  * This program implements an HTTP server that listens to port 8189
+ * Server program que imprime en una response toda la solicitud de datos.
+ * https:localhost:8189/echo para ver los request headers de su browser.
  */
 public class EchoServer {
     public static void main(String[] args) throws IOException

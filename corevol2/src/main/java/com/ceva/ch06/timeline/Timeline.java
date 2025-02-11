@@ -1,4 +1,4 @@
-package com.ceva.ch06;
+package com.ceva.ch06.timeline;
 
 import java.time.*;
 import java.util.*;

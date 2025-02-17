@@ -33,12 +33,13 @@ public class F_Operators {
 
         // switch expresion with enums
         // cuando el selector es un enum y no se tienen casos para las constantes, necesitamos un default
-        D_Enums.Size size = D_Enums.Size.MEDIUM;
+        D_Enums.Size size = D_Enums.Size.SMALL;
         String sizeVal = switch (size){
             case SMALL -> "S";
             case MEDIUM -> "M";
             case LARGE -> "L";
             case EXTRA_LARGE -> "XL";
+            case EXTRA_EXTRA_LARGE -> "XXL";
             case null -> "??"; // en caso de null evitamos el NullPointerException
         };
         System.out.println(sizeVal);

@@ -7,6 +7,7 @@ import java.awt.*;
  * A component that displays a message.
  */
 public class NotHelloWorldComponent extends JComponent {
+    // top left screen position
     public static final int MESSAGE_X = 75;
     public static final int MESSAGE_Y = 100;
 

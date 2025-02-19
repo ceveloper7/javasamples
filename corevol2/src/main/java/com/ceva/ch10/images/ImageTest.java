@@ -57,7 +57,7 @@ class ImageComponent extends JComponent
 
         // draw the image in the upper-left corner
         g.drawImage(image, 0, 0, null);
-        
+
         // repetimos the image across the component
         for (int i = 0; i * imageWidth <= getWidth(); i++)
             for (int j = 0; j * imageHeight <= getHeight(); j++)

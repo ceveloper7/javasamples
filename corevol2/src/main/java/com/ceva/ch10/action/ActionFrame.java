@@ -2,6 +2,7 @@ package com.ceva.ch10.action;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Locale;
 import javax.swing.*;
 
 public class ActionFrame extends JFrame
@@ -16,12 +17,15 @@ public class ActionFrame extends JFrame
 
         buttonPanel = new JPanel();
 
-        // define actions
+        // define three actions de tipo ColorActions
         var yellowAction = new ColorAction("Yellow", new ImageIcon(this.getClass().getResource("/yellow-ball.gif")), Color.YELLOW);
         var blueAction = new ColorAction("Blue", new ImageIcon(this.getClass().getResource("/blue-ball.gif")), Color.BLUE);
         var redAction = new ColorAction("Red", new ImageIcon(this.getClass().getResource("/red-ball.gif")), Color.RED);
 
-        // add buttons for these actions
+        /*
+         * Asociamos los actions con los buttons
+         * JButton constructor lee el nombre e icon del action y establece el short description como tooltip
+         */
         buttonPanel.add(new JButton(yellowAction));
         buttonPanel.add(new JButton(blueAction));
         buttonPanel.add(new JButton(redAction));
@@ -29,7 +33,7 @@ public class ActionFrame extends JFrame
         // add panel to frame
         add(buttonPanel);
 
-        // associate the Y, B, and R keys with names
+        // associate the Y, B, and R keys with names (KeyStroke)
         InputMap inputMap = buttonPanel.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
         inputMap.put(KeyStroke.getKeyStroke("ctrl Y"), "panel.yellow");
         inputMap.put(KeyStroke.getKeyStroke("ctrl B"), "panel.blue");
@@ -42,6 +46,9 @@ public class ActionFrame extends JFrame
         actionMap.put("panel.red", redAction);
     }
 
+    /*
+     * Action object que permite el cambio de color
+     */
     public class ColorAction extends AbstractAction
     {
         /**
@@ -55,6 +62,7 @@ public class ActionFrame extends JFrame
             putValue(Action.NAME, name);
             putValue(Action.SMALL_ICON, icon);
             putValue(Action.SHORT_DESCRIPTION, "Set panel color to " + name.toLowerCase());
+            //putValue(Action.LONG_DESCRIPTION, "A long description of the icon for potential use in online help. No Swing component uses this value. " + name.toLowerCase());
             putValue("color", c);
         }
 

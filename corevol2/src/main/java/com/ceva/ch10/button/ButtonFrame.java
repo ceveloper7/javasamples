@@ -24,7 +24,7 @@ public class ButtonFrame extends JFrame{
 
         buttonPanel = new JPanel();
 
-        // add buttons to panel
+        // Agregamos los botones al objeto JPanel y son administrados por el flow layout manager
         buttonPanel.add(yellowButton);
         buttonPanel.add(blueButton);
         buttonPanel.add(redButton);

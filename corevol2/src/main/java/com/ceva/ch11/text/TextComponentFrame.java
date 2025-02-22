@@ -14,7 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class TextComponentFrame extends JFrame
-{private static final int TEXTAREA_ROWS = 8;
+{
+    private static final int TEXTAREA_ROWS = 8;
     private static final int TEXTAREA_COLUMNS = 20;
 
     public TextComponentFrame()

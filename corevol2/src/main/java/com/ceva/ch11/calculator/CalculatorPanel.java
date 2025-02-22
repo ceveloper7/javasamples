@@ -35,7 +35,7 @@ public class CalculatorPanel extends JPanel
         // add the buttons in a 4 x 4 grid
 
         panel = new JPanel();
-        // especificamos filas y columnas 
+        // especificamos filas y columnas
         panel.setLayout(new GridLayout(4, 4));
 
         addButton("7", insert);

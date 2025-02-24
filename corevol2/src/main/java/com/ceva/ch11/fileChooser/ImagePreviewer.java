@@ -19,6 +19,7 @@ public class ImagePreviewer extends JLabel
         setPreferredSize(new Dimension(100, 100));
         setBorder(BorderFactory.createEtchedBorder());
 
+        // we update the preview image if user select a diferent file
         chooser.addPropertyChangeListener(event ->
         {
             if (event.getPropertyName() == JFileChooser.SELECTED_FILE_CHANGED_PROPERTY)

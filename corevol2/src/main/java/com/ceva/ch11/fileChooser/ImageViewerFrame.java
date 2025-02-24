@@ -32,6 +32,7 @@ public class ImageViewerFrame extends JFrame
         menu.add(openItem);
         openItem.addActionListener(event ->
         {
+            // 2. set current working directory
             chooser.setCurrentDirectory(new File("."));
 
             // show file chooser dialog
@@ -54,7 +55,7 @@ public class ImageViewerFrame extends JFrame
         label = new JLabel();
         add(label);
 
-        // set up file chooser
+        // 1. set up file chooser
         chooser = new JFileChooser();
 
         // accept all image files ending with .jpg, .jpeg, .gif

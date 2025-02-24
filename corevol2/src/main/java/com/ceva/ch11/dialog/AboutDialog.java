@@ -17,7 +17,7 @@ public class AboutDialog extends JDialog{
     public AboutDialog(JFrame owner)
     {
         super(owner, "About DialogTest", true);
-    
+
         // add HTML label to center
 
         add(

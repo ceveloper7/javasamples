@@ -14,27 +14,31 @@ public class SimpleTreeFrame extends JFrame{
     {
         setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 
-        // set up tree model data
-
+        // set up tree model data (user objects: String type)
         var root = new DefaultMutableTreeNode("World");
+
         var country = new DefaultMutableTreeNode("USA");
         root.add(country);
+
         var state = new DefaultMutableTreeNode("California");
         country.add(state);
-        var city = new DefaultMutableTreeNode("San Jose");
-        state.add(city);
-        city = new DefaultMutableTreeNode("Cupertino");
-        state.add(city);
+            var city = new DefaultMutableTreeNode("San Jose");
+            state.add(city);
+            city = new DefaultMutableTreeNode("Cupertino");
+            state.add(city);
+
         state = new DefaultMutableTreeNode("Michigan");
         country.add(state);
-        city = new DefaultMutableTreeNode("Ann Arbor");
-        state.add(city);
+            city = new DefaultMutableTreeNode("Ann Arbor");
+            state.add(city);
+
         country = new DefaultMutableTreeNode("Germany");
         root.add(country);
+
         state = new DefaultMutableTreeNode("Schleswig-Holstein");
         country.add(state);
-        city = new DefaultMutableTreeNode("Kiel");
-        state.add(city);
+            city = new DefaultMutableTreeNode("Kiel");
+            state.add(city);
 
         // construct tree and put it in a scroll pane
 

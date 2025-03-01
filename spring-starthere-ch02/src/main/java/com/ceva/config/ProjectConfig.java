@@ -2,10 +2,12 @@ package com.ceva.config;
 
 import com.ceva.model.Parrot;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 @Configuration
+@ComponentScan(basePackages = "com.ceva.model")
 public class ProjectConfig {
     // Agregamos un objeto Parrot al Context Spring
     @Bean

@@ -1,6 +1,7 @@
 package com.ceva;
 
 import com.ceva.config.ProjectConfig;
+import com.ceva.model.Loro;
 import com.ceva.model.Parrot;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -17,5 +18,8 @@ public class Main {
 
         Integer number = context.getBean(Integer.class);
         System.out.println(number);
+
+        var loro = context.getBean(Loro.class);
+        System.out.println(loro.getName());
     }
 }

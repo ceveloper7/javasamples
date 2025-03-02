@@ -5,6 +5,9 @@ import com.ceva.model.Person;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/*
+ * 3.1.1 Conexion entre Beans mediante una llamada directa de metodo entre los metodos @Bean
+ */
 @Configuration
 public class ProjectConfig {
     @Bean

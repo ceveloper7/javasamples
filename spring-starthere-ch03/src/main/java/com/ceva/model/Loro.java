@@ -6,7 +6,9 @@ import org.springframework.stereotype.Component;
 public class Loro {
     private String name;
 
-    public Loro(){}
+    public Loro(){
+        this.name = "Carlota";
+    }
 
     public String getName() {
         return name;

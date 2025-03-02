@@ -5,6 +5,7 @@ import com.ceva.config.ProjectConfig;
 import com.ceva.config.ProjectConfigComponents;
 import com.ceva.model.Parrot;
 import com.ceva.model.Person;
+import com.ceva.model.PersonAutowiredByConstructor;
 import com.ceva.model.Persona;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -22,7 +23,8 @@ public class Main {
 //        System.out.println("Person's parrot: " + person.getParrot());
 
         var context = new AnnotationConfigApplicationContext(ProjectConfigComponents.class);
-        var persona = context.getBean(Persona.class);
+        var persona = context.getBean(PersonAutowiredByConstructor.class);
+        //var persona = context.getBean(Persona.class);
 
         System.out.println("Nombre: " + persona.getName());
         System.out.println("Loro de la persona: " + persona.getLoro());

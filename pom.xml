@@ -17,6 +17,7 @@
         <module>object-oriented-analysis-design</module>
         <module>java-1z0829</module>
         <module>spring-starthere-ch02</module>
+        <module>spring-starthere-ch03</module>
     </modules>
 
     <properties>

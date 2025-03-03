@@ -18,6 +18,7 @@
         <module>java-1z0829</module>
         <module>spring-starthere-ch02</module>
         <module>spring-starthere-ch03</module>
+        <module>spring-starthere-ch04</module>
     </modules>
 
     <properties>

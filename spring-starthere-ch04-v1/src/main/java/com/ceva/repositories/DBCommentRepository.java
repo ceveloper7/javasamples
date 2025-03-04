@@ -1,12 +1,12 @@
 package com.ceva.repositories;
 
 import com.ceva.model.Comment;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 /*
  * @Component le dice a Spring que cree una instancia de esta clase y la agregue al Context
  */
-@Component
+@Repository
 public class DBCommentRepository implements CommentRepository{
     @Override
     public void storeComment(Comment comment) {

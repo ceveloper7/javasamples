@@ -20,6 +20,7 @@
         <module>spring-starthere-ch03</module>
         <module>spring-starthere-ch04</module>
         <module>spring-starthere-ch04-v1</module>
+        <module>spring-starthere-ch05</module>
     </modules>
 
     <properties>

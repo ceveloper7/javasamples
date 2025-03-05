@@ -25,6 +25,7 @@
         <module>spring-starthere-ch05-v2</module>
         <module>spring-starthere-ch05-v3</module>
         <module>atm</module>
+        <module>spring-starthere-ch05-v4</module>
     </modules>
 
     <properties>

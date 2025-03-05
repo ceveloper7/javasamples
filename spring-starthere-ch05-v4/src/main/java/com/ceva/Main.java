@@ -15,7 +15,7 @@ public class Main {
         var s1 = c.getBean(CommentService.class);
         var s2 = c.getBean(UserService.class);
 
-        boolean b = s1.getCommentRepository() == s2.getCommentRepository();
+        boolean b = s1.getCommentRepository() == s2.getCommentRepository(); // false
 
         System.out.println(b);
     }

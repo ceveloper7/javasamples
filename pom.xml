@@ -29,6 +29,7 @@
         <module>spring-starthere-ch05-v5</module>
         <module>spring-framework-ch03-ex1</module>
         <module>spring-framework-ch03-ex2</module>
+        <module>spring-framework-ch03-ex3</module>
     </modules>
 
     <properties>

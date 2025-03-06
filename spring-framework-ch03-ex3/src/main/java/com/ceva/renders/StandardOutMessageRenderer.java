@@ -7,11 +7,12 @@ import org.springframework.stereotype.Component;
 @Component("renderer")
 public class StandardOutMessageRenderer implements MessageRenderer{
 
+    private final MessageProvider messageProvider;
 
-    private MessageProvider messageProvider;
-
-    public StandardOutMessageRenderer(){
+    @Autowired
+    public StandardOutMessageRenderer(MessageProvider messageProvider){
         System.out.println("--> StandardOutMessageRenderer: constructor called");
+        this.messageProvider = messageProvider;
     }
 
     @Override
@@ -20,13 +21,6 @@ public class StandardOutMessageRenderer implements MessageRenderer{
             throw new RuntimeException("You must set the property messageProvider of class:"+StandardOutMessageRenderer.class.getName());
         }
         System.out.println(messageProvider.getMessage());
-    }
-
-    @Override
-    @Autowired
-    public void setMessageProvider(MessageProvider provider) {
-        System.out.println("--> Ijecting dependency using setter method");
-        this.messageProvider = provider;
     }
 
     public MessageProvider getMessageProvider(){

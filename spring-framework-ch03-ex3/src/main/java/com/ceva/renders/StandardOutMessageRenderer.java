@@ -11,7 +11,7 @@ public class StandardOutMessageRenderer implements MessageRenderer{
 
     @Autowired
     public StandardOutMessageRenderer(MessageProvider messageProvider){
-        System.out.println("--> StandardOutMessageRenderer: constructor called");
+        System.out.println("--> StandardOutMessageRenderer: Injecting dependency using constructor");
         this.messageProvider = messageProvider;
     }
 

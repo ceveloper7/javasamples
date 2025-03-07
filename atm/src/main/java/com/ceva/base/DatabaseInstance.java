@@ -1,12 +1,14 @@
-package com.ceva.db;
+package com.ceva.base;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.Map;
 import java.util.Properties;
@@ -14,7 +16,7 @@ import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DatabaseInstance implements IDatabaseInstance{
+public class DatabaseInstance implements IDatabaseInstance, Serializable, Cloneable {
 
     private LocalDate propertiesLoaded;
 
@@ -125,20 +127,23 @@ public class DatabaseInstance implements IDatabaseInstance{
     }
 
     @Override
-    public Connection getConnection() throws Exception {
+    public Connection getConnection() {
         Connection conn = null;
         String url = getConnectionUrl();
 
-        if(url == null)
-            throw new Exception("Unknow database type");
+        try{
+            if(url == null)
+                throw new Exception("Unknow database type");
 
-        Class.forName("org.postgresql.Driver");
+            Class.forName("org.postgresql.Driver");
 
-        Properties connPros = new Properties();
-        connPros.setProperty("user", connectionMap.get("UID"));
-        connPros.setProperty("password", connectionMap.get("PWD"));
+            Properties connPros = new Properties();
+            connPros.setProperty("user", connectionMap.get("UID"));
+            connPros.setProperty("password", connectionMap.get("PWD"));
 
-        conn = DriverManager.getConnection(url, connPros);
+            conn = DriverManager.getConnection(url, connPros);
+        }
+        catch (Exception ex){}
         return conn;
     }
 
@@ -146,4 +151,30 @@ public class DatabaseInstance implements IDatabaseInstance{
     public boolean isPropertiesOk() {
         return getPropertiesLoaded() != null;
     }
+
+    public boolean checkDBOk(){
+        if(getConnectionMap() != null && !getConnectionMap().isEmpty()){
+            try(Connection conn = getConnection();
+                Statement stmt = conn.createStatement())
+            {
+                String query = "SELECT version, releaseno FROM system";
+                ResultSet rs = stmt.executeQuery(query);
+                if(rs.next()){
+                    System.out.println(" Verison No: " + rs.getString(1) + " Realease No: " + rs.getString(2));
+                }
+                rs.close();
+                return true;
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        DatabaseInstance d = new DatabaseInstance();
+        d.checkDBOk();
+    }
+
 }

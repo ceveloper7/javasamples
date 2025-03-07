@@ -1,4 +1,4 @@
-package com.ceva.db;
+package com.ceva.base;
 
 import java.sql.Connection;
 

@@ -39,7 +39,7 @@ public interface GeneralDataBase {
      *  @param connection Connection Descriptor
      *  @return connection String
      */
-    public String getConnectionURL (DatabaseInstance connection);
+    public String getConnectionURL (CConnection connection);
 
     /**
      * 	Get Connection URL

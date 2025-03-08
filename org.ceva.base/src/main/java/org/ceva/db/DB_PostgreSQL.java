@@ -1,10 +1,10 @@
 package org.ceva.db;
 
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import com.zaxxer.hikari.HikariPoolMXBean;
 
@@ -58,7 +58,7 @@ public class DB_PostgreSQL implements GeneralDataBase{
     }
 
     @Override
-    public String getConnectionURL(DatabaseInstance connection) {
+    public String getConnectionURL(CConnection connection) {
         StringBuilder sb = new StringBuilder("jdbc:postgresql://")
                 .append(connection.getDbHost())
                 .append(":").append(connection.getDbPort())
@@ -102,7 +102,6 @@ public class DB_PostgreSQL implements GeneralDataBase{
     }
 
     @Override
-
     public String toString(){
         StringBuilder sb = new StringBuilder("DB_PostgreSQL[");
         sb.append(m_connectionUrl);
@@ -123,4 +122,6 @@ public class DB_PostgreSQL implements GeneralDataBase{
         sb.append("]");
         return sb.toString();
     }
+
+
 }

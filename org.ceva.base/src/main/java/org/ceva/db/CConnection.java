@@ -1,5 +1,7 @@
 package org.ceva.db;
 
+import org.ceva.util.Ini;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
@@ -7,7 +9,6 @@ import java.io.Serializable;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,10 +21,10 @@ import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DatabaseInstance implements Serializable, Cloneable {
+public class CConnection implements Serializable, Cloneable {
 
     private LocalDate propertiesLoaded;
-    private static final String APP_PROPERTIES_FILE = "app.properties";
+    private static final String APP_PROPERTIES_FILE = "app1.properties";
 
     private Map<String, String> connectionMap;
     private String	dbName;
@@ -35,7 +36,7 @@ public class DatabaseInstance implements Serializable, Cloneable {
 
     private Properties props;
 
-    public DatabaseInstance(){
+    public CConnection(){
         try{
             loadProperties();
         }
@@ -77,7 +78,7 @@ public class DatabaseInstance implements Serializable, Cloneable {
     private boolean loadProperties() throws IOException {
         boolean loadOk = false;
         props = new Properties();
-        URL propertyFile = DatabaseInstance.class.getResource(File.separator + APP_PROPERTIES_FILE);
+        URL propertyFile = CConnection.class.getResource(File.separator + APP_PROPERTIES_FILE);
         try {
             assert propertyFile != null;
             File propertyPath = Paths.get(propertyFile.toURI()).toFile();
@@ -184,7 +185,7 @@ public class DatabaseInstance implements Serializable, Cloneable {
     }
 
     public static void main(String[] args) {
-        DatabaseInstance d = new DatabaseInstance();
+        CConnection d = new CConnection();
         d.checkDBOk();
     }
 

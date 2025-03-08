@@ -1,5 +1,7 @@
 package org.ceva.db;
 
+import javax.sql.DataSource;
+import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.SQLException;
 
@@ -83,5 +85,64 @@ public interface GeneralDataBase {
      *  @return info
      */
     public String toString();
+
+    /**
+     * 	Create DataSource
+     *	@param connection connection
+     *	@return data dource
+     */
+    public DataSource getDataSource(CConnection connection);
+
+    /**
+     * 	Get connection from Connection Pool
+     *	@param connection info
+     *  @param autoCommit true if autocommit connection
+     *  @param transactionIsolation Connection transaction level
+     *	@return connection or null
+     *  @throws Exception
+     */
+    public Connection getFromConnectionPool(CConnection connection,
+                                            boolean autoCommit, int transactionIsolation) throws Exception;
+
+    /**
+     * 	Get connection from Connection Pool Short Running
+     *	@param connection info
+     *  @param autoCommit true if autocommit connection
+     *  @param transactionIsolation Connection transaction level
+     *	@return connection or null
+     *  @throws Exception
+     */
+    public Connection getFromConnectionPoolShortRunning(CConnection connection,
+                                                        boolean autoCommit, int transactionIsolation) throws Exception;
+
+    /**
+     * 	Get Connection from Driver
+     *	@param connection info
+     *	@return connection or null
+     *  @throws SQLException
+     */
+    public Connection getDriverConnection (CConnection connection) throws SQLException;
+
+    /**
+     * 	Get Driver Connection
+     *	@param dbUrl URL
+     *	@param dbUid user
+     *	@param dbPwd password
+     *	@return connection
+     *	@throws SQLException
+     */
+    public Connection getDriverConnection (String dbUrl, String dbUid, String dbPwd)
+            throws SQLException;
+
+    /**
+     * 	Get Status
+     * 	@return status info or null if no local datasource available
+     */
+    public String getStatus();
+
+    /**
+     * 	Close
+     */
+    public void close();
 
 }

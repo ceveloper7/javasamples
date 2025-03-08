@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
 public class CConnection implements Serializable, Cloneable {
 
     private LocalDate propertiesLoaded;
-    private static final String APP_PROPERTIES_FILE = "app1.properties";
+    private static final String APP_PROPERTIES_FILE = "app.properties";
 
     private Map<String, String> connectionMap;
     private String	dbName;

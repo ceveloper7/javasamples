@@ -1,15 +1,22 @@
 package org.ceva.db;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.lang.System.Logger.Level;
 
+import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import com.zaxxer.hikari.HikariPoolMXBean;
+import org.ceva.util.Ini;
+
+import javax.sql.DataSource;
 
 public class DB_PostgreSQL implements GeneralDataBase{
 
+    private static System.Logger logger = System.getLogger("org.ceva.db");
     // Driver
     private org.postgresql.Driver s_driver = null;
     public static final String DRIVER = "org.postgresql.Driver";
@@ -17,6 +24,11 @@ public class DB_PostgreSQL implements GeneralDataBase{
 
     // DataSource
     private volatile HikariDataSource m_ds;
+
+    /** Data Source	Long Running 	*/
+    private DataSource datasourceLongRunning = null;
+    /** Data Source	Short Running 	*/
+    private DataSource datasourceShortRunning = null;
 
     private String m_userName = null;
     private String m_connectionUrl = null;
@@ -123,5 +135,127 @@ public class DB_PostgreSQL implements GeneralDataBase{
         return sb.toString();
     }
 
+    @Override
+    public DataSource getDataSource(CConnection connection){
+        if(datasourceLongRunning != null)
+            return datasourceLongRunning;
 
+        if(Ini.isClient()){
+            logger.log(Level.WARNING, "Config Hikari Connection Pool Datasource");
+            HikariConfig config = new HikariConfig();
+            config.setDriverClassName(DRIVER);
+            config.setJdbcUrl(getConnectionURL(connection));
+            config.setUsername(connection.getDbUser());
+            config.setPassword(connection.getDbPass());
+            config.setIdleTimeout(0);
+            config.setMinimumIdle(15);
+            config.setMaximumPoolSize(150);
+            config.setPoolName("MyAppDS");
+            config.addDataSourceProperty("cachePrepStmts" , "true");
+            config.addDataSourceProperty("prepStmtCacheSize" , "250");
+            config.addDataSourceProperty("prepStmtCacheSqlLimit" , "2048");
+            datasourceLongRunning = new HikariDataSource(config);
+        }
+        return datasourceLongRunning;
+    }
+
+    public DataSource getDatasourceShortRunning(CConnection connection){
+        if(datasourceShortRunning != null)
+            return datasourceShortRunning;
+
+        if(Ini.isClient()){
+            logger.log(Level.WARNING, "Config Hakari Connection Pool Short Running Datasource");
+            HikariConfig config = new HikariConfig();
+            config.setDriverClassName(DRIVER);
+            config.setJdbcUrl(getConnectionURL(connection));
+            config.setUsername(connection.getDbUser());
+            config.setPassword(connection.getDbPass());
+            config.addDataSourceProperty( "poolName" , "AdempiereSRDS" );
+            config.addDataSourceProperty( "cachePrepStmts" , "true" );
+            config.addDataSourceProperty( "prepStmtCacheSize" , "250" );
+            config.addDataSourceProperty( "prepStmtCacheSqlLimit" , "2048" );
+            config.addDataSourceProperty( "idleTimeout" , "1200" );
+            config.addDataSourceProperty("maximumPoolSize", "10");
+            HikariDataSource cpds = new HikariDataSource(config);
+            datasourceShortRunning = cpds;
+            logger.log(Level.WARNING, "Starting Client Hikari Connection Pool");
+        }
+        return datasourceShortRunning;
+    }
+
+    @Override
+    public Connection getFromConnectionPool(CConnection connection,
+                                            boolean autoCommit, int transactionIsolation) throws Exception{
+        if(datasourceLongRunning == null){
+            getDataSource(connection);
+        }
+
+        Connection localConnection = datasourceLongRunning.getConnection();
+        if(localConnection != null){
+            localConnection.setAutoCommit(autoCommit);
+            localConnection.setTransactionIsolation(transactionIsolation);
+        }
+        return localConnection;
+    }
+
+    @Override
+    public Connection getFromConnectionPoolShortRunning(CConnection connection,
+                                                        boolean autoCommit, int transactionIsolation) throws Exception{
+        if(datasourceShortRunning == null){
+            getDatasourceShortRunning(connection);
+        }
+
+        Connection localConnection = datasourceShortRunning.getConnection();
+        if(localConnection != null){
+            localConnection.setAutoCommit(autoCommit);
+            localConnection.setTransactionIsolation(transactionIsolation);
+        }
+        return localConnection;
+    }
+
+    @Override
+    public Connection getDriverConnection (CConnection connection) throws SQLException{
+        getDriver();
+        return DriverManager.getConnection(getConnectionURL(connection), connection.getDbUser(), connection.getDbPass());
+    }
+
+    @Override
+    public Connection getDriverConnection (String dbUrl, String dbUid, String dbPwd) throws SQLException{
+        getDriver();
+        return DriverManager.getConnection(dbUrl, dbUid, dbPwd);
+    }
+
+    @Override
+    public String getStatus(){
+        if(m_ds == null){
+            return null;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        try{
+            HikariPoolMXBean mxBean = m_ds.getHikariPoolMXBean();
+
+            sb.append("# Connections: ").append(mxBean.getTotalConnections());
+            sb.append(" , # Busy Connections: ").append(mxBean.getActiveConnections());
+            sb.append(" , # Idle Connections: ").append(mxBean.getIdleConnections());
+            sb.append(" , # Threads waiting on connection: ").append(mxBean.getThreadsAwaitingConnection());
+            sb.append(" , # Min Pool Size: ").append(m_ds.getMinimumIdle());
+            sb.append(" , # Max Pool Size: ").append(m_ds.getMaximumPoolSize());
+            //sb.append(" , # Open Transactions: ").append(Trx.getOpenTransactions().length);
+        }
+        catch (Exception e){}
+
+        return sb.toString();
+    }
+
+    @Override
+    public void close(){
+        try{
+            m_ds.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
 }

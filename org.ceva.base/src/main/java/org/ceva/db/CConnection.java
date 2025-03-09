@@ -29,6 +29,7 @@ public class CConnection implements Serializable, Cloneable {
     private LocalDate propertiesLoaded;
     private static final String APP_PROPERTIES_FILE = "app.properties";
     private String[] m_info = new String[2];
+    private String m_dbInfo = null;
 
     private Map<String, String> connectionMap;
     private String	dbName;
@@ -413,4 +414,29 @@ public class CConnection implements Serializable, Cloneable {
             return "SERIALIZABLE";
         return "<?" + transactionIsolation + "?>";
     }	//	getTransactionIsolationInfo
+
+    // Get DB version info
+    public String getDBInfo(){
+        if(m_dbInfo != null)
+            return m_dbInfo;
+
+        StringBuilder sb = new StringBuilder();
+        {
+            try(Connection conn = getConnection(true, Connection.TRANSACTION_READ_COMMITTED);){
+                if(conn != null){
+                    DatabaseMetaData dbmt = conn.getMetaData();
+                    sb.append(dbmt.getDatabaseProductVersion()).append(";").append(dbmt.getDriverVersion());
+                    if(isDataSource())
+                        sb.append("; DS:");
+                    m_dbInfo = sb.toString();
+                }
+            }
+            catch (Exception e){
+                logger.log(Level.ERROR, ", ", e);
+                sb.append(e.getLocalizedMessage());
+            }
+        }
+        return sb.toString();
+    }// getDBInfo
+
 }

@@ -3,6 +3,8 @@ package org.ceva.util;
 import static java.lang.System.Logger.Level.*;
 
 import org.ceva.db.CConnection;
+import org.ceva.db.Database;
+import org.ceva.db.GeneralDataBase;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -103,7 +105,33 @@ public final class DB {
         return success;
     }
 
+    // get Database driver
+    public GeneralDataBase getDatabase(){
+        if(s_cc != null)
+            return s_cc.getDatabase();
+        logger.log(ERROR, "There is no Database connection");
+        return null;
+    }
 
+    // Get Database adapter by URL String
+    public GeneralDataBase getDatabaseFromURL(String url){
+        return Database.getDatabaseFromURL(url);
+    }
+
+    // we have a PostgreSQL DB?
+    public static boolean isPostgreSQL(){
+        if(s_cc != null)
+            return s_cc.isPostgreSQL();
+        logger.log(ERROR, "There is no Database");
+        return false;
+    }
+
+    // Get Database info
+    public static String getDatabaseInfo(){
+        if(s_cc != null)
+            return s_cc.getDBInfo();
+        return "There is no Database";
+    }
 
     public static void main(String[] args) {
         Ini.setClient(true);

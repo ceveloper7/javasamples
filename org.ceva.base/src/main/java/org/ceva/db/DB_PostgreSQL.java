@@ -243,8 +243,9 @@ public class DB_PostgreSQL implements GeneralDataBase{
             sb.append(" , # Max Pool Size: ").append(m_ds.getMaximumPoolSize());
             //sb.append(" , # Open Transactions: ").append(Trx.getOpenTransactions().length);
         }
-        catch (Exception e){}
-
+        catch (Exception e){
+            System.err.println(sb.toString() + " - " + e.getMessage());
+        }
         return sb.toString();
     }
 

@@ -126,7 +126,9 @@ public class CConnection implements Serializable, Cloneable {
                 loadOk = true;
             }
         }
-        catch (URISyntaxException e){}
+        catch (URISyntaxException e){
+            e.printStackTrace();
+        }
         return loadOk;
     }
 
@@ -398,9 +400,6 @@ public class CConnection implements Serializable, Cloneable {
                     conn.setAutoCommit(autoCommit);
                 m_okDB = true;
             }
-        }
-        catch (SQLException ex){
-            System.err.println(getConnectionUrl() + " - " + ex.getLocalizedMessage());
         }
         catch (Exception ex){
             System.err.println(getConnectionUrl() + " - " + ex.getLocalizedMessage());

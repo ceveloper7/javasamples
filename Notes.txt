@@ -1,4 +1,7 @@
-
-Ini
-===
-loadProperties(String)
+DB
+==
+isConnected()
+    getConnection()                                             --- ok
+        getConnection(boolean)                                  --- ok
+            createConnection(boolean, int)                      --- ok
+                CConnection.getConnection(boolean, int)         --- ok

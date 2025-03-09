@@ -246,26 +246,6 @@ public class CConnection implements Serializable, Cloneable {
         return getPropertiesLoaded() != null;
     }
 
-    public boolean checkDBOk(){
-        if(getConnectionMap() != null && !getConnectionMap().isEmpty()){
-            try(Connection conn = getConnection();
-                Statement stmt = conn.createStatement())
-            {
-                String query = "SELECT version, releaseno FROM system";
-                ResultSet rs = stmt.executeQuery(query);
-                if(rs.next()){
-                    System.out.println(" Verison No: " + rs.getString(1) + " Realease No: " + rs.getString(2));
-                }
-                rs.close();
-                return true;
-            }
-            catch (Exception e){
-                e.printStackTrace();
-            }
-        }
-        return false;
-    }
-
     public static void verifyDBOk(){
         Ini.setClient(true);
         CConnection s_cc = CConnection.get();
@@ -433,9 +413,4 @@ public class CConnection implements Serializable, Cloneable {
             return "SERIALIZABLE";
         return "<?" + transactionIsolation + "?>";
     }	//	getTransactionIsolationInfo
-
-    public static void main(String[] args) {
-       CConnection.verifyDBOk();
-    }
-
 }

@@ -34,6 +34,7 @@
         <module>org.ceva.base</module>
         <module>spring-framework-ch03-ex5</module>
         <module>spring-framework-ch03-ex6</module>
+        <module>spring-framework-ch03-ex7</module>
     </modules>
 
     <properties>

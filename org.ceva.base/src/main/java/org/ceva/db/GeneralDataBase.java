@@ -41,7 +41,7 @@ public interface GeneralDataBase {
      *  @param connection Connection Descriptor
      *  @return connection String
      */
-    public String getConnectionURL (CConnection connection);
+    public String getConnectionURL (ADConnection connection);
 
     /**
      * 	Get Connection URL
@@ -91,7 +91,7 @@ public interface GeneralDataBase {
      *	@param connection connection
      *	@return data dource
      */
-    public DataSource getDataSource(CConnection connection);
+    public DataSource getDataSource(ADConnection connection);
 
     /**
      * 	Get connection from Connection Pool
@@ -101,7 +101,7 @@ public interface GeneralDataBase {
      *	@return connection or null
      *  @throws Exception
      */
-    public Connection getFromConnectionPool(CConnection connection,
+    public Connection getFromConnectionPool(ADConnection connection,
                                             boolean autoCommit, int transactionIsolation) throws Exception;
 
     /**
@@ -112,7 +112,7 @@ public interface GeneralDataBase {
      *	@return connection or null
      *  @throws Exception
      */
-    public Connection getFromConnectionPoolShortRunning(CConnection connection,
+    public Connection getFromConnectionPoolShortRunning(ADConnection connection,
                                                         boolean autoCommit, int transactionIsolation) throws Exception;
 
     /**
@@ -121,7 +121,7 @@ public interface GeneralDataBase {
      *	@return connection or null
      *  @throws SQLException
      */
-    public Connection getDriverConnection (CConnection connection) throws SQLException;
+    public Connection getDriverConnection (ADConnection connection) throws SQLException;
 
     /**
      * 	Get Driver Connection

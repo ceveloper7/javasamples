@@ -3,8 +3,6 @@ package org.ceva.db;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.lang.System.Logger.Level;
 
 import com.zaxxer.hikari.HikariConfig;
@@ -70,7 +68,7 @@ public class DB_PostgreSQL implements GeneralDataBase{
     }
 
     @Override
-    public String getConnectionURL(CConnection connection) {
+    public String getConnectionURL(ADConnection connection) {
         StringBuilder sb = new StringBuilder("jdbc:postgresql://")
                 .append(connection.getDbHost())
                 .append(":").append(connection.getDbPort())
@@ -136,7 +134,7 @@ public class DB_PostgreSQL implements GeneralDataBase{
     }
 
     @Override
-    public DataSource getDataSource(CConnection connection){
+    public DataSource getDataSource(ADConnection connection){
         if(datasourceLongRunning != null)
             return datasourceLongRunning;
 
@@ -159,7 +157,7 @@ public class DB_PostgreSQL implements GeneralDataBase{
         return datasourceLongRunning;
     }
 
-    public DataSource getDatasourceShortRunning(CConnection connection){
+    public DataSource getDatasourceShortRunning(ADConnection connection){
         if(datasourceShortRunning != null)
             return datasourceShortRunning;
 
@@ -184,7 +182,7 @@ public class DB_PostgreSQL implements GeneralDataBase{
     }
 
     @Override
-    public Connection getFromConnectionPool(CConnection connection,
+    public Connection getFromConnectionPool(ADConnection connection,
                                             boolean autoCommit, int transactionIsolation) throws Exception{
         if(datasourceLongRunning == null){
             getDataSource(connection);
@@ -199,7 +197,7 @@ public class DB_PostgreSQL implements GeneralDataBase{
     }
 
     @Override
-    public Connection getFromConnectionPoolShortRunning(CConnection connection,
+    public Connection getFromConnectionPoolShortRunning(ADConnection connection,
                                                         boolean autoCommit, int transactionIsolation) throws Exception{
         if(datasourceShortRunning == null){
             getDatasourceShortRunning(connection);
@@ -214,7 +212,7 @@ public class DB_PostgreSQL implements GeneralDataBase{
     }
 
     @Override
-    public Connection getDriverConnection (CConnection connection) throws SQLException{
+    public Connection getDriverConnection (ADConnection connection) throws SQLException{
         getDriver();
         return DriverManager.getConnection(getConnectionURL(connection), connection.getDbUser(), connection.getDbPass());
     }

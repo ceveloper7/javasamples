@@ -2,27 +2,27 @@ package org.ceva.util;
 
 import static java.lang.System.Logger.Level.*;
 
-import org.ceva.db.CConnection;
+import org.ceva.db.ADConnection;
 import org.ceva.db.Database;
 import org.ceva.db.GeneralDataBase;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public final class DB {
+public final class AdmiralDB {
     private static final System.Logger logger = System.getLogger("org.ceva.util");
 
-    public static CConnection s_cc = null;
+    public static ADConnection s_cc = null;
     private static Object s_ccLock = new Object();
 
     // Set DB Connection
-    public synchronized static void setDBTarget(CConnection cc){
+    public synchronized static void setDBTarget(ADConnection cc){
         if(cc == null)
             throw new IllegalArgumentException("Connection is null");
         if(s_cc != null && s_cc.equals(cc))
             return;
 
-        DB.closeDBTaget();
+        AdmiralDB.closeDBTaget();
 
         synchronized (s_ccLock){
             s_cc = cc;
@@ -135,7 +135,7 @@ public final class DB {
 
     public static void main(String[] args) {
         Ini.setClient(true);
-        DB.setDBTarget(CConnection.get());
-        System.out.println(DB.isConnected());
+        AdmiralDB.setDBTarget(ADConnection.get());
+        System.out.println(AdmiralDB.isConnected());
     }
 }

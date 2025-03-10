@@ -3,7 +3,6 @@ package org.ceva.db;
 import org.ceva.util.Ini;
 
 import javax.sql.DataSource;
-import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
@@ -21,7 +20,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.lang.System.Logger.Level;
 
-public class CConnection implements Serializable, Cloneable {
+public class ADConnection implements Serializable, Cloneable {
 
     private static System.Logger logger = System.getLogger("org.ceva.db");
 
@@ -46,9 +45,9 @@ public class CConnection implements Serializable, Cloneable {
     private DataSource m_ds = null;
     // Database
     private GeneralDataBase m_db = null;
-    private volatile static CConnection s_cs = null;
+    private volatile static ADConnection s_cs = null;
 
-    public CConnection(){
+    public ADConnection(){
         try{
             loadProperties();
         }
@@ -117,7 +116,7 @@ public class CConnection implements Serializable, Cloneable {
     private boolean loadProperties() throws IOException {
         boolean loadOk = false;
         props = new Properties();
-        URL propertyFile = CConnection.class.getResource(File.separator + APP_PROPERTIES_FILE);
+        URL propertyFile = ADConnection.class.getResource(File.separator + APP_PROPERTIES_FILE);
         try {
             assert propertyFile != null;
             File propertyPath = Paths.get(propertyFile.toURI()).toFile();
@@ -193,20 +192,20 @@ public class CConnection implements Serializable, Cloneable {
 
     }
 
-    public synchronized static CConnection get(){
+    public synchronized static ADConnection get(){
         if(s_cs == null){
-            s_cs = new CConnection();
+            s_cs = new ADConnection();
             s_cs.setConnectionAttributes();
         }
         return s_cs;
     }
 
-    public static CConnection get(String dbType, String dbHost, String dbPort, String dbName){
+    public static ADConnection get(String dbType, String dbHost, String dbPort, String dbName){
         return get(dbType, dbHost, dbPort, dbName, null, null);
     }
 
-    public static CConnection get(String dbType, String dbHost, String dbPort, String dbName, String dbUser, String dbPass){
-        CConnection cc = new CConnection();
+    public static ADConnection get(String dbType, String dbHost, String dbPort, String dbName, String dbUser, String dbPass){
+        ADConnection cc = new ADConnection();
         cc.setDbType(dbType);
         cc.setDbHost(dbHost);
         cc.setDbPort(dbPort);
@@ -249,7 +248,7 @@ public class CConnection implements Serializable, Cloneable {
 
     public static void verifyDBOk(){
         Ini.setClient(true);
-        CConnection s_cc = CConnection.get();
+        ADConnection s_cc = ADConnection.get();
         s_cc.setDataSource();
         try(Connection conn = s_cc.getConnection(false, 1);
             Statement stmt = conn.createStatement();){
@@ -318,8 +317,8 @@ public class CConnection implements Serializable, Cloneable {
 
     @Override
     public boolean equals(Object o){
-        if(o instanceof CConnection){
-            CConnection cc = (CConnection) o;
+        if(o instanceof ADConnection){
+            ADConnection cc = (ADConnection) o;
             if(cc.getDbHost().equals(dbHost) &&
                     cc.getDbPort().equals(dbPort) &&
                     cc.getDbName().equals(dbName) &&

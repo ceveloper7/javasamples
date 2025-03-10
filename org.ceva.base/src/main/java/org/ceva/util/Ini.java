@@ -20,7 +20,11 @@ public final class Ini implements Serializable {
         s_client = client;
     }
 
-    public static String getAppHome(){
+    public static String findSystemHome(){
+        return getSystemHome();
+    }
+
+    public static String getSystemHome(){
         String env = SystemProperties.getAppHome();
 
         if(env == null || env.isEmpty()){
@@ -40,6 +44,6 @@ public final class Ini implements Serializable {
 
     public static void main(String[] args) {
         Ini.setClient(true);
-        System.out.println(getAppHome());
+        System.out.println(getSystemHome());
     }
 }

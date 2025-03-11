@@ -37,6 +37,7 @@
         <module>spring-framework-ch03-ex7</module>
         <module>spring-framework-ch03-ex8</module>
         <module>spring-framework-ch03-ex9</module>
+        <module>spring-framework-ch03-ex10</module>
     </modules>
 
     <properties>

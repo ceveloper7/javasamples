@@ -5,12 +5,15 @@ import static java.lang.System.Logger.Level.*;
 import org.ceva.db.ADConnection;
 import org.ceva.db.Database;
 import org.ceva.db.GeneralDataBase;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
 public final class AdmiralDB {
-    private static final System.Logger logger = System.getLogger("org.ceva.util");
+    //private static final System.Logger logger = System.getLogger("org.ceva.util");
+    private static final Logger logger = LoggerFactory.getLogger(AdmiralDB.class);
 
     public static ADConnection s_cc = null;
     private static Object s_ccLock = new Object();
@@ -30,8 +33,8 @@ public final class AdmiralDB {
 
         s_cc.setDataSource();
 
-        if(logger.isLoggable(INFO)){
-            logger.log(INFO, s_cc + " - DS= " + s_cc.isDataSource());
+        if(logger.isInfoEnabled()){
+            logger.info(s_cc + " - DS= " + s_cc.isDataSource());
         }
     }
 
@@ -42,7 +45,7 @@ public final class AdmiralDB {
         s_cc = null;
 
         if(closed)
-            logger.log(INFO, "closed");
+            logger.info("closed");
     }
 
     // get an Auto commit connection
@@ -109,7 +112,7 @@ public final class AdmiralDB {
     public GeneralDataBase getDatabase(){
         if(s_cc != null)
             return s_cc.getDatabase();
-        logger.log(ERROR, "There is no Database connection");
+        logger.error("There is no Database connection");
         return null;
     }
 
@@ -122,7 +125,7 @@ public final class AdmiralDB {
     public static boolean isPostgreSQL(){
         if(s_cc != null)
             return s_cc.isPostgreSQL();
-        logger.log(ERROR, "There is no Database");
+        logger.error("There is no Database");
         return false;
     }
 

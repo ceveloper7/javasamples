@@ -1,6 +1,8 @@
 package org.ceva.db;
 
 import org.ceva.util.Ini;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.sql.DataSource;
 import java.io.File;
@@ -22,8 +24,8 @@ import java.lang.System.Logger.Level;
 
 public class ADConnection implements Serializable, Cloneable {
 
-    private static System.Logger logger = System.getLogger("org.ceva.db");
-
+    //private static System.Logger logger = System.getLogger("org.ceva.db");
+    private static final Logger logger = LoggerFactory.getLogger(ADConnection.class);
 
     private LocalDate propertiesLoaded;
     private static final String APP_PROPERTIES_FILE = "app.properties";
@@ -283,7 +285,7 @@ public class ADConnection implements Serializable, Cloneable {
                 System.exit(1);
             }
             catch (Exception ee){
-                logger.log(Level.ERROR,ee.toString());
+                logger.error(ee.toString());
             }
         }
         return m_db;
@@ -369,7 +371,7 @@ public class ADConnection implements Serializable, Cloneable {
                 conn = m_db.getFromConnectionPoolShortRunning(this, autoCommit, transactionIsolation);
             }
             catch (Exception exception){
-                logger.log(Level.ERROR, exception.getMessage());
+                logger.error(exception.getMessage());
                 ee = exception;
             }
             if(conn != null) {
@@ -431,7 +433,7 @@ public class ADConnection implements Serializable, Cloneable {
                 }
             }
             catch (Exception e){
-                logger.log(Level.ERROR, ", ", e);
+                logger.error(", ", e);
                 sb.append(e.getLocalizedMessage());
             }
         }

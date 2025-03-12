@@ -9,12 +9,16 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import com.zaxxer.hikari.HikariPoolMXBean;
 import org.ceva.util.Ini;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.sql.DataSource;
 
 public class DB_PostgreSQL implements GeneralDataBase{
 
-    private static System.Logger logger = System.getLogger("org.ceva.db");
+    //private static System.Logger logger = System.getLogger("org.ceva.db");
+    private static final Logger logger = LoggerFactory.getLogger(DB_PostgreSQL.class);
+
     // Driver
     private org.postgresql.Driver s_driver = null;
     public static final String DRIVER = "org.postgresql.Driver";
@@ -139,7 +143,7 @@ public class DB_PostgreSQL implements GeneralDataBase{
             return datasourceLongRunning;
 
         if(Ini.isClient()){
-            logger.log(Level.WARNING, "Config Hikari Connection Pool Datasource");
+            logger.warn("Config Hikari Connection Pool Datasource");
             HikariConfig config = new HikariConfig();
             config.setDriverClassName(DRIVER);
             config.setJdbcUrl(getConnectionURL(connection));
@@ -162,7 +166,7 @@ public class DB_PostgreSQL implements GeneralDataBase{
             return datasourceShortRunning;
 
         if(Ini.isClient()){
-            logger.log(Level.WARNING, "Config Hakari Connection Pool Short Running Datasource");
+            logger.warn("Config Hakari Connection Pool Short Running Datasource");
             HikariConfig config = new HikariConfig();
             config.setDriverClassName(DRIVER);
             config.setJdbcUrl(getConnectionURL(connection));
@@ -176,7 +180,7 @@ public class DB_PostgreSQL implements GeneralDataBase{
             config.addDataSourceProperty("maximumPoolSize", "10");
             HikariDataSource cpds = new HikariDataSource(config);
             datasourceShortRunning = cpds;
-            logger.log(Level.WARNING, "Starting Client Hikari Connection Pool");
+            logger.warn("Starting Client Hikari Connection Pool");
         }
         return datasourceShortRunning;
     }

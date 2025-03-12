@@ -39,6 +39,7 @@
         <module>spring-framework-ch03-ex9</module>
         <module>spring-framework-ch03-ex10</module>
         <module>spring-framework-ch03-ex11</module>
+        <module>spring-framework-ch03-ex12</module>
     </modules>
 
     <properties>

@@ -40,6 +40,7 @@
         <module>spring-framework-ch03-ex10</module>
         <module>spring-framework-ch03-ex11</module>
         <module>spring-framework-ch03-ex12</module>
+        <module>spring-framework-ch03-ex13</module>
     </modules>
 
     <properties>

@@ -144,7 +144,10 @@ public class DatabaseInstance implements Serializable, Cloneable {
 
             conn = DriverManager.getConnection(url, connPros);
         }
-        catch (Exception ex){}
+        catch (Exception ex){
+            System.err.println("Could not connect to Database" + ex.getLocalizedMessage());
+            ex.printStackTrace();
+        }
         return conn;
     }
 
@@ -167,7 +170,9 @@ public class DatabaseInstance implements Serializable, Cloneable {
                 return true;
             }
             catch (Exception e){
+                System.err.println("Problem with system table " + e.toString());
                 e.printStackTrace();
+                return false;
             }
         }
         return false;

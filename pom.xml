@@ -43,6 +43,7 @@
         <module>spring-framework-ch03-ex13</module>
         <module>spring-date4u</module>
         <module>spring-framework-ch03-ex14</module>
+        <module>spring-framework-ch03-ex15</module>
     </modules>
 
     <properties>

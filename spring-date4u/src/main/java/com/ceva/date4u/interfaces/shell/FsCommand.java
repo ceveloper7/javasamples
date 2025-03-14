@@ -19,7 +19,7 @@ public class FsCommand {
         this.fs = fs;
     }
 
-    @ShellMethod("Display required free disk space")
+    @ShellMethod("Show free disk space")
     public String minimumFreeDiskSpace(){
         return DataSize.ofBytes(fs.getFreeDiskSpace()).toGigabytes() + " GB";
     }

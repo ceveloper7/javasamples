@@ -2,13 +2,13 @@ package com.ceva.beans;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.DisposableBean;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class FileManager {
+public class FileManager implements DisposableBean {
     private static final Logger logger = LoggerFactory.getLogger(FileManager.class);
     private Path file;
 
@@ -23,11 +23,9 @@ public class FileManager {
         }
     }
 
-    /*
-     * Definimos metodo destroyMethod
-     */
-    private void destroyMethod() throws IOException{
-        logger.info("Calling destroyMethod() on bean of type {}", FileManager.class);
+    @Override
+    public void destroy() throws Exception {
+        logger.info("Calling destroy() method on bean of type {}", FileManager.class);
         if(file != null){
             Files.deleteIfExists(file);
         }

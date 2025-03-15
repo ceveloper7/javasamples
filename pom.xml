@@ -47,6 +47,7 @@
         <module>spring-framework-ch04-ex1</module>
         <module>spring-framework-ch04-ex2</module>
         <module>spring-framework-ch04-ex3</module>
+        <module>spring-framework-ch04-ex4</module>
     </modules>
 
     <properties>

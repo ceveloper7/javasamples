@@ -50,6 +50,7 @@
         <module>spring-framework-ch04-ex4</module>
         <module>spring-framework-ch04-ex5</module>
         <module>spring-framework-ch04-ex6</module>
+        <module>spring-framework-ch04-ex7</module>
     </modules>
 
     <properties>

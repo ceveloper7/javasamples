@@ -1,6 +1,8 @@
 package com.ceva.model;
 
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 
 public class Apple{
     private int weight = 0;
@@ -31,5 +33,16 @@ public class Apple{
     @Override
     public String toString() {
         return String.format("Apple{color=%s, weight=%d}", color, weight);
+    }
+
+    public static List<Apple> appleInventory(){
+        return Arrays.asList(
+                new Apple(80, Color.GREEN),
+                new Apple(77, Color.GREEN),
+                new Apple(91, Color.RED),
+                new Apple(77, Color.GREEN),
+                new Apple(88, Color.RED),
+                new Apple(110, Color.GREEN)
+        );
     }
 }

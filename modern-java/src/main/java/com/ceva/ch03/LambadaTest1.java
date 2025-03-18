@@ -8,21 +8,14 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-public class LambadaTest_1 {
+public class LambadaTest1 {
 
-    List<Apple> inventory = Arrays.asList(
-            new Apple(80, Color.GREEN),
-            new Apple(77, Color.GREEN),
-            new Apple(91, Color.RED),
-            new Apple(77, Color.GREEN),
-            new Apple(88, Color.RED),
-            new Apple(110, Color.GREEN)
-    );
+
 
     private void appleComparatorByWeight(){
         Comparator<Apple> comparator = (Apple a1, Apple a2) -> a1.getWeight() - a2.getWeight();
-        inventory.sort(comparator);
-        System.out.println(inventory);
+        Apple.appleInventory().sort(comparator);
+        System.out.println(Apple.appleInventory());
     }
 
     public static List<Apple> filter(List<Apple> inventory, AppleBooleanPredicate predicate){
@@ -36,12 +29,12 @@ public class LambadaTest_1 {
     }
 
     private void printGreenApples(){
-        List<Apple> result = filter(inventory, (Apple apple) -> apple.getColor() == Color.GREEN);
+        List<Apple> result = filter(Apple.appleInventory(), (Apple apple) -> apple.getColor() == Color.GREEN);
         System.out.println(result);
     }
 
     public static void main(String[] args) {
-        LambadaTest_1 t = new LambadaTest_1();
+        LambadaTest1 t = new LambadaTest1();
 
         System.out.println("--> Ordering Apples by weight");
         t.appleComparatorByWeight();

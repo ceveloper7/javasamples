@@ -52,6 +52,7 @@
         <module>spring-framework-ch04-ex6</module>
         <module>spring-framework-ch04-ex7</module>
         <module>spring-framework-ch04-ex8</module>
+        <module>modern-java</module>
     </modules>
 
     <properties>

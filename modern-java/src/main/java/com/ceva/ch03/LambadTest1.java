@@ -3,12 +3,12 @@ package com.ceva.ch03;
 import com.ceva.model.Apple;
 import com.ceva.model.Color;
 
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-public class LambadaTest1 {
+public class LambadTest1 {
 
 
 
@@ -21,9 +21,14 @@ public class LambadaTest1 {
     public static List<Apple> filter(List<Apple> inventory, AppleBooleanPredicate predicate){
         List<Apple> result = new ArrayList<>();
         for(Apple apple : inventory){
-            if(predicate.test(apple)){
-                result.add(apple);
-            }
+           try {
+               if(predicate.test(apple)){
+                   result.add(apple);
+               }
+           }
+           catch (IOException ex){
+               ex.printStackTrace();
+           }
         }
         return result;
     }
@@ -34,7 +39,7 @@ public class LambadaTest1 {
     }
 
     public static void main(String[] args) {
-        LambadaTest1 t = new LambadaTest1();
+        LambadTest1 t = new LambadTest1();
 
         System.out.println("--> Ordering Apples by weight");
         t.appleComparatorByWeight();

@@ -8,9 +8,19 @@ public class Apple{
     private int weight = 0;
     private Color color;
 
+    public Apple(int weight){
+        this.weight = weight;
+        this.color = Color.UNKNOWN;
+    }
+
     public Apple(int weight, Color color){
         this.weight = weight;
         this.color = color;
+    }
+
+    public Apple() {
+        this.weight = 0;
+        this.color = Color.UNKNOWN;
     }
 
     public int getWeight() {

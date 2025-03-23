@@ -48,11 +48,13 @@ public class Apple{
     public static List<Apple> appleInventory(){
         return Arrays.asList(
                 new Apple(80, Color.GREEN),
-                new Apple(77, Color.GREEN),
+                new Apple(77, Color.RED),
                 new Apple(91, Color.RED),
                 new Apple(77, Color.GREEN),
                 new Apple(88, Color.RED),
-                new Apple(110, Color.GREEN)
+                new Apple(110, Color.GREEN),
+                new Apple(81, Color.BLUE),
+                new Apple(75, Color.BLUE)
         );
     }
 }

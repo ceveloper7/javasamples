@@ -1,4 +1,4 @@
-package com.ood.ch01.start;
+package com.ood.ch01.ricksGuitarsStart;
 
 public class Guitar {
     private String serialNUmber, builder, model, type, backWood, topWood;

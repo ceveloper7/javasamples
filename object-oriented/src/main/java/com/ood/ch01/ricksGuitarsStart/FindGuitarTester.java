@@ -1,4 +1,4 @@
-package com.ood.ch01.start;
+package com.ood.ch01.ricksGuitarsStart;
 
 public class FindGuitarTester {
     private static void initializeInventory(Inventory inventory) {

@@ -1,4 +1,4 @@
-package com.ood.ch01.start;
+package com.ood.ch01.ricksGuitarsStart;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -54,6 +54,7 @@
         <module>spring-framework-ch04-ex8</module>
         <module>modern-java</module>
         <module>object-oriented</module>
+        <module>java-exercise-vol1</module>
     </modules>
 
     <properties>

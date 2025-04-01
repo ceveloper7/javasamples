@@ -8,13 +8,11 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 
 /**
- *
- * Service Class que permite crear un Thumbnail de alta calidad
- * Para resolver la ambiguedad que se produce al solicitar un tipo Thumbnail, hay dos posibles soluciones
- * 1: @Qualifiers
+ * Service Class que permite crear un Thumbnail de baja calidad
+ * Usamos un diferente renderizado para crear una version thumbnail de una imagen
  */
-@Service("qualityThumbnailRenderer")
-public class AwtBicubicThumbnail implements Thumbnail{
+@Service("fastThumbnailRenderer")
+public class AwtNearestNeighborThumbnail implements Thumbnail{
 
     private static BufferedImage create(BufferedImage source, int width, int height){
         double thumbRatio = (double) width / height;
@@ -27,19 +25,14 @@ public class AwtBicubicThumbnail implements Thumbnail{
 
         BufferedImage thumb = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         Graphics2D g2 = thumb.createGraphics();
-        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
         g2.drawImage(source, 0, 0, width, height, null);
         g2.dispose();
         return thumb;
     }
 
-    /**
-     * Se pasa una imagen como un byte[] y retorna un thumbnail de la imagen
-     * @param imageBytes
-     * @return
-     */
     @Override
-    public byte[] thumbnail(byte[] imageBytes){
+    public byte[] thumbnail(byte[] imageBytes) {
         try(InputStream is = new ByteArrayInputStream(imageBytes);
             ByteArrayOutputStream baos = new ByteArrayOutputStream())
         {

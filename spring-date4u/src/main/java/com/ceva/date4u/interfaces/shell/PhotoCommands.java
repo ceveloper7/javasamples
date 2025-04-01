@@ -8,7 +8,13 @@ import org.springframework.shell.standard.ShellMethod;
 import javax.imageio.ImageIO;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
+/**
+ * PhotoCommands -- uses --> PhotoService
+ */
 @ShellComponent
 public class PhotoCommands {
     private final PhotoService photoService;
@@ -30,5 +36,17 @@ public class PhotoCommands {
                         return "Unable to read image dimensions";
                     }
                 }).orElse("Image not found ");
+    }
+
+    /**
+     * Uploading images
+     * @param fileName
+     * @return
+     * @throws IOException
+     */
+    @ShellMethod("Upload photo") // upload-photo
+    public String uploadPhoto(String fileName) throws IOException{
+        byte[] bytes = Files.readAllBytes(Paths.get(fileName));
+        return "Uploaded " + photoService.upload(bytes);
     }
 }

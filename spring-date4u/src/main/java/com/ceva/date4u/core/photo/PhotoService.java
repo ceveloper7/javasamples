@@ -23,7 +23,7 @@ public class PhotoService {
     // si se solicita un tipo Thumbnail existen dos tipos concretos y eso produce una ambiguedad, por lo que debemos usar
     // @Qualifier en los tipos.
     @Autowired
-    @Qualifier("qualityThumbnailRenderer") // llamamos al servicio que genera un Thumbnail de alta calidad  
+    @Qualifier("qualityThumbnailRenderer") // llamamos al servicio que genera un Thumbnail de alta calidad
     private Thumbnail thumbnail;
 
     @Autowired

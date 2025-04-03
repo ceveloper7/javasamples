@@ -60,6 +60,7 @@
         <module>spring-framework-ch04-ex11</module>
         <module>spring-framework-ch04-ex12</module>
         <module>spring-framework-ch04-ex13</module>
+        <module>spring-framework-ch04-ex14</module>
     </modules>
 
     <properties>

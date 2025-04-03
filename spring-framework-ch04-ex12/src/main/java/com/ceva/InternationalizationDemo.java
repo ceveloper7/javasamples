@@ -7,6 +7,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import java.util.Locale;
 
+/**
+ * Spring Internationalization
+ */
 public class InternationalizationDemo {
     private static final Logger LOGGER = LoggerFactory.getLogger(InternationalizationDemo.class);
 

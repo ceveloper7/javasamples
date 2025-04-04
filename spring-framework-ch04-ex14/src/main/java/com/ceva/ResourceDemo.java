@@ -13,6 +13,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.stream.Collectors;
 
+/**
+ * Accediendo a Recursos - Page 149
+ */
 public class ResourceDemo {
     private static final Logger LOGGER = LoggerFactory.getLogger(ResourceDemo.class);
 

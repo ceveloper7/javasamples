@@ -2,12 +2,15 @@ package com.ceva.ex1.ch02.expressions_operands_operators;
 
 import com.ceva.util.Util;
 
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * Program 3: Convert Currency Amount to Coins
+ * DecimalFormat [locale: "English (United States)", pattern: "¤#,##0.00"]
  */
 public class Program3 {
     private static final Logger LOGGER = Logger.getLogger(Program3.class.getName());
@@ -18,7 +21,11 @@ public class Program3 {
     private static final String LIRETTA = "Liretta";
     private static final String CENTS = "LirettaCents";
 
-    private int[] liretta = {2, 1, 50, 20, 10, 5, 2, 1};
+    private int[] lirettaUnits = {2, 1};
+    private int[] lirettaCents = {50, 20, 10, 5, 2, 1};
+    private int[] money = new int[2];
+    private int valUnits = 0;
+    private int valCents = 0;
 
     public Program3(){
         input = new Scanner(System.in);
@@ -32,14 +39,35 @@ public class Program3 {
         return input.nextInt();
     }
 
+    private void units(int units){
+        for(int i = 0; i < lirettaUnits.length; i++){
+            System.out.println(units / lirettaUnits[i] + " x " + lirettaUnits[i] + " Liretta");
+            if(units % lirettaUnits[i] == 0){
+                System.out.println((units%lirettaUnits[i])+ " x " + lirettaUnits[i+1] + " Liretta");
+                break;
+            }
+            //int c = units % lirettaUnits[i];
+            System.out.println((units%lirettaUnits[i]) + " x " + lirettaUnits[i + 1] + " Liretta");
+            break;
+        }
+    }
+
+    private void cents(int cents){
+
+    }
+
     private void convert(){
         Util.displayMessage("\nPlease enter the amount of money to convert: ");
         String userInput = input.next();
         boolean inputOk = Util.isDigit(userInput);
         if(inputOk){
-
-            System.out.println(Integer.parseInt(userInput));
-
+            int point = userInput.indexOf(".");
+            if(point > 0){
+                units(Integer.parseInt(userInput.substring(0,point)));
+                cents(Integer.parseInt(userInput.substring(point+1)));
+            }else{
+                units(Integer.parseInt(userInput));
+            }
 
         }else{
             LOGGER.log(Level.WARNING, "Ingreso un monto invalido, vuelva a intentarlo");

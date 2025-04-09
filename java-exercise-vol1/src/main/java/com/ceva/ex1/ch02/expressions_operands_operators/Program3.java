@@ -46,14 +46,21 @@ public class Program3 {
                 System.out.println((units%lirettaUnits[i])+ " x " + lirettaUnits[i+1] + " Liretta");
                 break;
             }
-            //int c = units % lirettaUnits[i];
             System.out.println((units%lirettaUnits[i]) + " x " + lirettaUnits[i + 1] + " Liretta");
             break;
         }
     }
 
     private void cents(int cents){
-
+        for(int i = 0; i < lirettaCents.length; i++){
+            if(cents >= lirettaCents[i]){
+                System.out.println((cents/lirettaCents[i]) + " x " + lirettaCents[i] + " LirettaCents");
+                cents %= lirettaCents[i];
+            }
+            else{
+                System.out.println(cents / lirettaCents[i] + " x " + lirettaCents[i] + " LirettaCents");
+            }
+        }
     }
 
     private void convert(){

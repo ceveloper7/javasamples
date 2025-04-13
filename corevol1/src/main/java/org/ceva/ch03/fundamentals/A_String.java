@@ -2,7 +2,16 @@ package org.ceva.ch03.fundamentals;
 
 public class A_String {
     public static void main(String[] args) {
-        scapeSequence();
+        stringWithWhitSpace();
+    }
+
+    private static void stringWithWhitSpace(){
+        String str1 = "\u205F \u205FThis is my test string with trailing\n" +
+                "whitespace-END.\u205F \u205F";
+        String trimmedString = str1.trim();
+        String strippedString = str1.strip();
+        System.out.printf("'%s'%n", trimmedString);
+        System.out.printf("'%s'%n", strippedString);
     }
 
     private static void scapeSequence(){
@@ -140,6 +149,9 @@ public class A_String {
         // 4. s.substring(a,b) obtenemos una subcadena de una cadena. a string, b pos que no queremos copiar
         int sp = s.indexOf(" ");
         System.out.println(s.substring(0, sp)); // Love
+
+        String cadena = "abcdefghijklmabcdefghijklm";
+        System.out.println("substring: " + cadena.substring(3,6));
     }
 
     // String.split() produce un array

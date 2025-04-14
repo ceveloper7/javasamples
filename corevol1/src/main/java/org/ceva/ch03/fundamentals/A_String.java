@@ -2,7 +2,7 @@ package org.ceva.ch03.fundamentals;
 
 public class A_String {
     public static void main(String[] args) {
-        stringWithWhitSpace();
+        textBlocks();
     }
 
     private static void stringWithWhitSpace(){
@@ -60,6 +60,19 @@ public class A_String {
                 </div>
                 """;
         System.out.println(html2);
+
+        // si el texto termina con una comilla doble, debemos usar scape para la comilla
+        String multiLineString = """
+            Este es un text block que termina 
+            con una comilla doble: \"
+            """;
+        System.out.println(multiLineString);
+
+        // cuando hay dos o mas comillas doble consecutivas
+        String multiLineString2 = """
+            Este text block contiene una secuencia de tres comillas: \"""
+            """;
+        System.out.println(multiLineString2);
     }
 
     /*

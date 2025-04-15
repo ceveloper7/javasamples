@@ -26,8 +26,20 @@ public class F_Switch {
         };
         System.out.println(sizeValue);
 
+        System.out.println("No Fallthrough");
+        String seasonName = "Spring";
+        int numLetters = switch (seasonName){
+            case "Spring" -> {
+                System.out.println("Spring break");
+                yield 6;
+            }
+
+            case "Summer", "Winter" -> 6;
+            case "Fall" -> 4;
+            default -> -1;
+        };
+
         // Fallthrough: Cada case termina con dos puntos (:)
-        String seasonName = "Primavera";
         int seasonValue = switch(seasonName){
             case "Verano":
                 yield 1;
@@ -45,7 +57,7 @@ public class F_Switch {
 
     private void switchStatement(){
         // Fallthrough
-        D_Enums.Size size = D_Enums.Size.LARGE;
+        D_Enums.Size size = D_Enums.Size.SMALL;
         int sizeValue = 0;
         switch (size){
             case SMALL:

@@ -87,16 +87,12 @@ public class Program3 {
         while(!userExited){
             int mainMenuSelection = displayMainMenu();
             switch (mainMenuSelection){
-                case CONVERT:
-                    convert();
-                    break;
-                case EXIT:
+                case CONVERT -> convert();
+                case EXIT -> {
                     Util.displayMessageLine("\nExiting the System...");
                     userExited = true;
-                    break;
-                default:
-                    Util.displayMessageLine("\nYou did not enter a valid selection option, try again");
-                    break;
+                }
+                default -> Util.displayMessageLine("\nYou did not enter a valid selection option, try again");
             }
         }
     }

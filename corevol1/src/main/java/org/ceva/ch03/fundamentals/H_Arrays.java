@@ -1,11 +1,37 @@
 package org.ceva.ch03.fundamentals;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 
 public class H_Arrays {
     public static void main(String[] args) {
         H_Arrays arrays = new H_Arrays();
-        arrays.arrayOperations();
+        arrays.testScoreAverage();
+    }
+
+    private void testScoreAverage(){
+        final int NUMBER_OF_STUDENTS = 5;
+        int[] marks = new int[NUMBER_OF_STUDENTS];
+
+        try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))){
+            for (int i = 0; i < NUMBER_OF_STUDENTS; i++){
+                System.out.println("Enter marks of Student #" + (i+1) + ": ");
+                String str = reader.readLine();
+                marks[i] = Integer.parseInt(str);
+            }
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+
+        int total = 0;
+        for(int i = 0; i < NUMBER_OF_STUDENTS; i++){
+            total += marks[i];
+        }
+
+        // convertimos variable total a float
+        System.out.println("Average marks: " + (float)total/NUMBER_OF_STUDENTS);
     }
 
     private void arrayOperations(){

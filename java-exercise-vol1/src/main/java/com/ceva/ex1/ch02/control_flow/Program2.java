@@ -45,6 +45,10 @@ public class Program2 {
             if(!input.isBlank()){
                 try{
                     double value = Double.parseDouble(input);
+                    if(value <= 0){
+                        writer.println("Invalid input, please enter a valid liquid quantity");
+                        continue;
+                    }
                     process(value);
                     break;
                 }

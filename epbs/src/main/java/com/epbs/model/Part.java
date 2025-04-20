@@ -1,5 +1,7 @@
 package com.epbs.model;
 
+import java.time.LocalDate;
+
 /**
  * Superclass Item
  */
@@ -9,6 +11,12 @@ public class Part {
     private String name;
     private String description;
     private boolean assembly;
+
+    private boolean isActive;
+    private int createdBy;
+    private LocalDate created;
+    private int updatedBy;
+    private LocalDate updated;
 
     public Part(int partNo, int internalNo, String name, String description, boolean isAnAssebly){
         this.partNo = partNo;

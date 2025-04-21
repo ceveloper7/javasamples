@@ -1,6 +1,7 @@
 package com.epbs.model;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * Superclass Item
@@ -9,20 +10,39 @@ public class Part {
     private int partNo;
     private int internalNo;
     private String name;
-    private String description;
+    private String description = null;
     private boolean assembly;
+    private boolean active;
 
-    private boolean isActive;
     private int createdBy;
     private LocalDate created;
     private int updatedBy;
     private LocalDate updated;
 
-    public Part(int partNo, int internalNo, String name, String description, boolean isAnAssebly){
-        this.partNo = partNo;
-        this.name = name;
-        this.description = description;
-        this.assembly = isAnAssebly;
+    public Part(int partNo, int internalNo, String name, String description, boolean assembly, boolean active, int createdBy, LocalDate created, int updatedBy, LocalDate updated){
+        if(partNo == 0)
+            System.out.println("PartNo can not be null");
+        else
+            this.partNo = partNo;
+
+        this.name = Objects.requireNonNull(name, "Name can not be null");
+        this.description = Objects.requireNonNullElse(description, "No description");
+        this.assembly = assembly;
+        this.active = active;
+
+        if(createdBy == 0)
+            System.out.println("Created by can not be 0");
+        else
+            this.createdBy = createdBy;
+
+        this.created = Objects.requireNonNullElseGet(created, LocalDate::now);
+
+        if(updatedBy == 0)
+            System.out.println("Updated by can not be null");
+        else
+            this.updatedBy = updatedBy;
+
+        this.updated = Objects.requireNonNullElseGet(updated, LocalDate::now);
     }
 
     public int getItemNo() {
@@ -63,5 +83,13 @@ public class Part {
 
     public void setAsAssembly(boolean assembly) {
         this.assembly = assembly;
+    }
+
+    public boolean getActive(){
+        return active;
+    }
+
+    public void setActive(boolean active){
+        this.active = active;
     }
 }

@@ -12,11 +12,11 @@ public class A_Date {
     private void dateBasics(){
         // 1. Se construye un objeto Date con la fecha actual.
         // La instancia de una clase Date tiene un estado, que es un punto particular en el tiempo.
-        System.out.println(new Date());
+        System.out.println("New object date: " + new Date());
 
         // 2. Representacion String del objeto Date
         String currentDate = new Date().toString();
-        System.out.println(currentDate);
+        System.out.println("String representation of a date: " + currentDate);
 
         // 3. Variable now hace referencia a un objeto Date; Las variable now y startTime no son objetos
         // la variable now tiene la referencia en memoria al objeto Date creado

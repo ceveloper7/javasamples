@@ -92,4 +92,36 @@ public class Part {
     public void setActive(boolean active){
         this.active = active;
     }
+
+    public int getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(int createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public LocalDate getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDate created) {
+        this.created = created;
+    }
+
+    public int getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(int updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+    public LocalDate getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(LocalDate updated) {
+        this.updated = updated;
+    }
 }

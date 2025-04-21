@@ -1,6 +1,7 @@
 package com.epbs.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -26,6 +27,7 @@ public class Equipment {
         this.description = Objects.requireNonNullElse(description, "no description");
         this.active = active;
         this.manufacturer = Objects.requireNonNull(manufacturer, "Manufacturer of equipment can not be null");
+        this.assemblies = new ArrayList<>();
 
         if(createdBy == 0)
             System.out.println("Created by can not be 0");
@@ -100,5 +102,21 @@ public class Equipment {
 
     public void setUpdated(LocalDate updated) {
         this.updated = updated;
+    }
+
+    public Manufacturer getManufacturer(){
+        return manufacturer;
+    }
+
+    public void setManufacturer(Manufacturer manufacturer){
+        this.manufacturer = manufacturer;
+    }
+
+    public List<Assembly> getAssemblies() {
+        return assemblies;
+    }
+
+    public void setAssemblies(List<Assembly> assemblies) {
+        this.assemblies = assemblies;
     }
 }

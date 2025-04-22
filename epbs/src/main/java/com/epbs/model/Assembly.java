@@ -1,6 +1,7 @@
 package com.epbs.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,6 +20,7 @@ public class Assembly extends Part {
 
     public Assembly(int partNo, int internalNo, String name, String description, boolean assembly, boolean active, int createdBy, LocalDate created, int updatedBy, LocalDate updated){
         super(partNo, internalNo, name, description, assembly, active, createdBy, created, updatedBy, updated);
+        parts = new ArrayList<>();
     }
 
     public List<Part> getParts() {

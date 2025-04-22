@@ -10,7 +10,7 @@ public class Part {
     private int partNo;
     private int internalNo;
     private String name;
-    private String description = null;
+    private String description;
     private boolean assembly;
     private boolean active;
 
@@ -19,12 +19,17 @@ public class Part {
     private int updatedBy;
     private LocalDate updated;
 
+    public Part(){
+        this(0, 0, "", "", false, false, 0, LocalDate.now(), 0, LocalDate.now());
+    }
+
     public Part(int partNo, int internalNo, String name, String description, boolean assembly, boolean active, int createdBy, LocalDate created, int updatedBy, LocalDate updated){
         if(partNo == 0)
             System.out.println("PartNo can not be null");
         else
             this.partNo = partNo;
 
+        this.internalNo = internalNo;
         this.name = Objects.requireNonNull(name, "Name can not be null");
         this.description = Objects.requireNonNullElse(description, "No description");
         this.assembly = assembly;

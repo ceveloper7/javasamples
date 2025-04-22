@@ -8,7 +8,7 @@ import java.util.Objects;
 public class Equipment {
     private int id;
     private String name;
-    private String description = null;
+    private String description;
     private boolean active;
 
     // relacion de agregacion: Equipment has a Manufacturer
@@ -21,6 +21,11 @@ public class Equipment {
     private LocalDate updated;
 
     // picture
+
+    public Equipment(){
+        this("", "", false, null,  0, LocalDate.now(), 0, LocalDate.now());
+        this.id = 0;
+    }
 
     public Equipment(String name, String description, boolean active, Manufacturer manufacturer, int createdBy, LocalDate created, int updatedBy, LocalDate updated){
         this.name = Objects.requireNonNull(name, "The name can not be null");

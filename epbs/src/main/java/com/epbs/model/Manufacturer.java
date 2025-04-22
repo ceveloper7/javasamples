@@ -15,6 +15,11 @@ public class Manufacturer {
     private int updatedBy;
     private LocalDate updated;
 
+    public Manufacturer(){
+        this("","","",false, 0, LocalDate.now(), 0, LocalDate.now());
+        this.id = 0;
+    }
+
     public Manufacturer(String code, String name, String description, boolean active, int createdBy, LocalDate created, int updatedBy, LocalDate updated){
         this.code = Objects.requireNonNull(code, "The code can not be null");
         this.name = Objects.requireNonNull(name, "The name can not be null");
@@ -22,9 +27,18 @@ public class Manufacturer {
 
         this.active = active;
 
-        this.createdBy = Objects.requireNonNull(createdBy, "Created by can not be null");
+        if(createdBy == 0)
+            System.out.println("Created by can not be 0");
+        else
+            this.createdBy = createdBy;
+
         this.created = Objects.requireNonNullElseGet(created, LocalDate::now);
-        this.updatedBy = Objects.requireNonNull(updatedBy, "Updated by can not be null");
+
+        if(updatedBy == 0)
+            System.out.println("Updated by can not be null");
+        else
+            this.updatedBy = updatedBy;
+
         this.updated = Objects.requireNonNullElseGet(updated, LocalDate::now);
     }
 

@@ -29,5 +29,52 @@ public class Assembly extends Part {
         this.parts = parts;
     }
 
+    public boolean isActive() {
+        return active;
+    }
 
+    @Override
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    @Override
+    public int getCreatedBy() {
+        return createdBy;
+    }
+
+    @Override
+    public void setCreatedBy(int createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    @Override
+    public LocalDate getCreated() {
+        return created;
+    }
+
+    @Override
+    public void setCreated(LocalDate created) {
+        this.created = created;
+    }
+
+    @Override
+    public int getUpdatedBy() {
+        return updatedBy;
+    }
+
+    @Override
+    public void setUpdatedBy(int updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+    @Override
+    public LocalDate getUpdated() {
+        return updated;
+    }
+
+    @Override
+    public void setUpdated(LocalDate updated) {
+        this.updated = updated;
+    }
 }

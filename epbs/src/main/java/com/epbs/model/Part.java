@@ -117,6 +117,7 @@ public class Part {
         this.updated = updated;
     }
 
+    @Override
     public boolean equals(Object otherObject){
         if(this == otherObject) return true;
 
@@ -128,6 +129,12 @@ public class Part {
         return partNo == other.partNo
                 && Objects.equals(name, other.name)
                 && Objects.equals(description, other.description)
-                && kit == other.kit;
+                && kit == other.kit
+                && active == other.active;
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(partNo, name, description, kit, active);
     }
 }

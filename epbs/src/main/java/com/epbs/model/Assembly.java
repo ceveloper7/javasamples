@@ -46,4 +46,9 @@ public class Assembly extends Part{
         Assembly other = (Assembly) otherObject;
         return topLevel == other.topLevel && Objects.equals(manufacturer, other.manufacturer);
     }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(super.hashCode(), topLevel, manufacturer);
+    }
 }

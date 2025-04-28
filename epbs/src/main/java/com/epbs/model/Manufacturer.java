@@ -113,4 +113,24 @@ public class Manufacturer {
     public void setUpdated(LocalDate updated) {
         this.updated = updated;
     }
+
+    @Override
+    public boolean equals(Object otherObject){
+        if(this == otherObject) return true;
+
+        if (otherObject == null) return false;
+
+        if(!(otherObject instanceof Manufacturer other)) return false;
+
+        return id == other.id
+                && Objects.equals(code, other.code)
+                && Objects.equals(name, other.name)
+                && Objects.equals(description, other.description)
+                && active == other.active;
+    }
+
+    @Override
+    public int hashCode(){
+       return Objects.hash(id, code, name, description, active);
+    }
 }

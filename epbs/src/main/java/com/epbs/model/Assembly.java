@@ -8,19 +8,8 @@ import java.util.Objects;
  * Relationship: An Assembly is a Part. each Assembly object is an object of the Superclass Part.
  */
 public class Assembly extends Part{
-//    private int id;
-//    private String partNo;
-//    private String name;
-//    private String description;
-
     private boolean topLevel;
     private Manufacturer manufacturer;
-
-//    private boolean active;
-//    private int createdBy;
-//    private LocalDate created;
-//    private int updatedBy;
-//    private LocalDate updated;
 
     public Assembly(){
         super();
@@ -28,8 +17,8 @@ public class Assembly extends Part{
         this.manufacturer = null;
     }
 
-    public Assembly(int partNo, String name, String description, boolean active,  int createdBy, LocalDate created, int updatedBy, LocalDate updated,  boolean topLevel, Manufacturer manufacturer){
-        super(partNo, name, description, active, createdBy, created, updatedBy, updated);
+    public Assembly(int partNo, String name, String description, boolean kit, boolean active,  int createdBy, LocalDate created, int updatedBy, LocalDate updated,  boolean topLevel, Manufacturer manufacturer){
+        super(partNo, name, description, kit, active, createdBy, created, updatedBy, updated);
         this.topLevel =  topLevel;
         this.manufacturer = manufacturer;
     }
@@ -50,4 +39,11 @@ public class Assembly extends Part{
         return manufacturer;
     }
 
+    @Override
+    public boolean equals(Object otherObject){
+        if(!super.equals(otherObject)) return false;
+
+        Assembly other = (Assembly) otherObject;
+        return topLevel == other.topLevel && Objects.equals(manufacturer, other.manufacturer);
+    }
 }

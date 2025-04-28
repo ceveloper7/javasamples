@@ -7,10 +7,10 @@ import java.util.Objects;
  * Superclass Item
  */
 public class Part {
-//    private int id;
     private int partNo;
     private String name;
     private String description;
+    private boolean kit;
 
     private boolean active;
     private int createdBy;
@@ -19,15 +19,16 @@ public class Part {
     private LocalDate updated;
 
     public Part(){
-        this(0,  "", "",  false, 0, LocalDate.now(), 0, LocalDate.now());
+        this(0,  "", "", false, false, 0, LocalDate.now(), 0, LocalDate.now());
     }
 
-    public Part(int partNo, String name, String description, boolean active, int createdBy, LocalDate created, int updatedBy, LocalDate updated){
+    public Part(int partNo, String name, String description, boolean kit, boolean active, int createdBy, LocalDate created, int updatedBy, LocalDate updated){
         this.partNo = partNo;
         this.name = Objects.requireNonNull(name, "Name can not be null");
         this.description = Objects.requireNonNullElse(description, "No description");
 
         this.active = active;
+        this.kit = kit;
 
         if(createdBy == 0)
             System.out.println("Created by can not be 0");
@@ -68,6 +69,14 @@ public class Part {
         this.description = description;
     }
 
+    public boolean isAKit(){
+        return kit;
+    }
+
+    public void setKit(boolean kit){
+        this.kit = kit;
+    }
+
     public boolean getActive(){
         return active;
     }
@@ -106,5 +115,19 @@ public class Part {
 
     public void setUpdated(LocalDate updated) {
         this.updated = updated;
+    }
+
+    public boolean equals(Object otherObject){
+        if(this == otherObject) return true;
+
+        if (otherObject == null) return false;
+
+        // instanceof pattern matching, si otherObject es una instancia de Part, la variable other hace referencia a otherObject
+        if(!(otherObject instanceof Part other)) return false;
+
+        return partNo == other.partNo
+                && Objects.equals(name, other.name)
+                && Objects.equals(description, other.description)
+                && kit == other.kit;
     }
 }

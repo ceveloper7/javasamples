@@ -7,32 +7,26 @@ import java.util.Objects;
  * Superclass Item
  */
 public class Part {
+//    private int id;
     private int partNo;
-    private int internalNo;
     private String name;
     private String description;
-    private boolean assembly;
-    private boolean active;
 
+    private boolean active;
     private int createdBy;
     private LocalDate created;
     private int updatedBy;
     private LocalDate updated;
 
     public Part(){
-        this(0, 0, "", "", false, false, 0, LocalDate.now(), 0, LocalDate.now());
+        this(0,  "", "",  false, 0, LocalDate.now(), 0, LocalDate.now());
     }
 
-    public Part(int partNo, int internalNo, String name, String description, boolean assembly, boolean active, int createdBy, LocalDate created, int updatedBy, LocalDate updated){
-        if(partNo == 0)
-            System.out.println("PartNo can not be null");
-        else
-            this.partNo = partNo;
-
-        this.internalNo = internalNo;
+    public Part(int partNo, String name, String description, boolean active, int createdBy, LocalDate created, int updatedBy, LocalDate updated){
+        this.partNo = partNo;
         this.name = Objects.requireNonNull(name, "Name can not be null");
         this.description = Objects.requireNonNullElse(description, "No description");
-        this.assembly = assembly;
+
         this.active = active;
 
         if(createdBy == 0)
@@ -50,20 +44,12 @@ public class Part {
         this.updated = Objects.requireNonNullElseGet(updated, LocalDate::now);
     }
 
-    public int getItemNo() {
+    public int getPartNo() {
         return partNo;
     }
 
-    public void setItemNo(int itemNo) {
-        this.partNo = itemNo;
-    }
-
-    public int getInternalNo() {
-        return internalNo;
-    }
-
-    public void setInternalNo(int internalNo) {
-        this.internalNo = internalNo;
+    public void setPartNo(int partNo) {
+        this.partNo = partNo;
     }
 
     public String getName() {
@@ -82,20 +68,12 @@ public class Part {
         this.description = description;
     }
 
-    public boolean isAssembly() {
-        return assembly;
-    }
-
-    public void setAsAssembly(boolean assembly) {
-        this.assembly = assembly;
-    }
-
     public boolean getActive(){
         return active;
     }
 
-    public void setActive(boolean active){
-        this.active = active;
+    public void setTopLevel(boolean topLevel){
+        this.active = topLevel;
     }
 
     public int getCreatedBy() {

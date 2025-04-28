@@ -7,7 +7,9 @@ import java.util.Objects;
 
 public class Equipment {
     private int id;
-    private String name;
+    private String NroSerie;
+    private String code;
+    private String model;
     private String description;
     private boolean active;
 
@@ -27,8 +29,8 @@ public class Equipment {
         this.id = 0;
     }
 
-    public Equipment(String name, String description, boolean active, Manufacturer manufacturer, int createdBy, LocalDate created, int updatedBy, LocalDate updated){
-        this.name = Objects.requireNonNull(name, "The name can not be null");
+    public Equipment(String model, String description, boolean active, Manufacturer manufacturer, int createdBy, LocalDate created, int updatedBy, LocalDate updated){
+        this.model = Objects.requireNonNull(model, "The model can not be null");
         this.description = Objects.requireNonNullElse(description, "no description");
         this.active = active;
         this.manufacturer = Objects.requireNonNull(manufacturer, "Manufacturer of equipment can not be null");
@@ -53,12 +55,12 @@ public class Equipment {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getModel() {
+        return model;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public String getDescription() {

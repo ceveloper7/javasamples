@@ -2,8 +2,11 @@ package org.ceva.ch04.classes_objects.model;
 
 import org.ceva.ch05.inheritance.Person;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.Properties;
 import java.util.random.RandomGenerator;
 
 /*
@@ -38,6 +41,24 @@ public class Employee  extends Person implements Cloneable, Comparable<Employee>
     // bloque de inicializacion static
     static {
         nextId = generator.nextInt(10000);
+
+        ClassLoader loader = Employee.class.getClassLoader();
+        InputStream inputStream = loader.getResourceAsStream("app.properties");
+        if(inputStream != null){
+            Properties properties = new Properties();
+            try {
+                properties.load(inputStream);
+                if(properties.containsKey("MAIN_VERSION")){
+                    System.out.println(properties.getProperty("MAIN_VERSION"));
+                }
+            }
+            catch (IOException ex){}
+        }
+
+        Class<?> clazz = Employee.class;
+        Package pack = clazz.getPackage();
+        if (pack != null)
+            System.out.println(pack.getImplementationVersion());
     }
 
     // Constructor con valores por defecto

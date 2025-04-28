@@ -1,82 +1,53 @@
 package com.epbs.model;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
 /**
  * Subclass or derived class or child class Assembly
- * Relationship: An Assembly is an Item
+ * Relationship: An Assembly is a Part. each Assembly object is an object of the Superclass Part.
  */
-public class Assembly extends Part {
-    // Relacion de agregacion: Assembly tiene parts
-    List<Part> parts;
+public class Assembly extends Part{
+//    private int id;
+//    private String partNo;
+//    private String name;
+//    private String description;
 
-    private boolean active;
-    private int createdBy;
-    private LocalDate created;
-    private int updatedBy;
-    private LocalDate updated;
+    private boolean topLevel;
+    private Manufacturer manufacturer;
 
-    public Assembly(int partNo, int internalNo, String name, String description, boolean assembly, boolean active, int createdBy, LocalDate created, int updatedBy, LocalDate updated){
-        super(partNo, internalNo, name, description, assembly, active, createdBy, created, updatedBy, updated);
-        parts = new ArrayList<>();
+//    private boolean active;
+//    private int createdBy;
+//    private LocalDate created;
+//    private int updatedBy;
+//    private LocalDate updated;
+
+    public Assembly(){
+        super();
+        this.topLevel = false;
+        this.manufacturer = null;
     }
 
-    public List<Part> getParts() {
-        return parts;
+    public Assembly(int partNo, String name, String description, boolean active,  int createdBy, LocalDate created, int updatedBy, LocalDate updated,  boolean topLevel, Manufacturer manufacturer){
+        super(partNo, name, description, active, createdBy, created, updatedBy, updated);
+        this.topLevel =  topLevel;
+        this.manufacturer = manufacturer;
     }
 
-    public void setParts(List<Part> parts) {
-        this.parts = parts;
+    public boolean isTopLevel() {
+        return topLevel;
     }
 
-    public boolean isActive() {
-        return active;
+    public void setTopLevel(boolean topLevel) {
+        this.topLevel = topLevel;
     }
 
-    @Override
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setManufacturer(Manufacturer manufacturer){
+        this.manufacturer = manufacturer;
     }
 
-    @Override
-    public int getCreatedBy() {
-        return createdBy;
+    public Manufacturer getManufacturer(){
+        return manufacturer;
     }
 
-    @Override
-    public void setCreatedBy(int createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    @Override
-    public LocalDate getCreated() {
-        return created;
-    }
-
-    @Override
-    public void setCreated(LocalDate created) {
-        this.created = created;
-    }
-
-    @Override
-    public int getUpdatedBy() {
-        return updatedBy;
-    }
-
-    @Override
-    public void setUpdatedBy(int updatedBy) {
-        this.updatedBy = updatedBy;
-    }
-
-    @Override
-    public LocalDate getUpdated() {
-        return updated;
-    }
-
-    @Override
-    public void setUpdated(LocalDate updated) {
-        this.updated = updated;
-    }
 }

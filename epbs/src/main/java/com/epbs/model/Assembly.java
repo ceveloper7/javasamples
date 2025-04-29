@@ -51,4 +51,9 @@ public class Assembly extends Part{
     public int hashCode(){
         return Objects.hash(super.hashCode(), topLevel, manufacturer);
     }
+
+    @Override
+    public String toString(){
+        return "Manufacturer code: " + manufacturer.getCode() + ", " + super.toString();
+    }
 }

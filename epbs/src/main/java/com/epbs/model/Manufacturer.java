@@ -133,4 +133,9 @@ public class Manufacturer {
     public int hashCode(){
        return Objects.hash(id, code, name, description, active);
     }
+
+    @Override
+    public String toString(){
+        return "Manufacturer[" + code + ", " + name + "]";
+    }
 }

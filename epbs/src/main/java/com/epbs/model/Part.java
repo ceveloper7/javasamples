@@ -137,4 +137,9 @@ public class Part {
     public int hashCode(){
         return Objects.hash(partNo, name, description, kit, active);
     }
+
+    @Override
+    public String toString(){
+        return "Part No " + partNo + ", " + name;
+    }
 }

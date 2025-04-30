@@ -16,11 +16,9 @@ public class Manufacturer {
     private LocalDate updated;
 
     public Manufacturer(){
-        this("","","",false, 0, LocalDate.now(), 0, LocalDate.now());
-        this.id = 0;
     }
 
-    public Manufacturer(String code, String name, String description, boolean active, int createdBy, LocalDate created, int updatedBy, LocalDate updated){
+    public Manufacturer(String name, String code, String description, boolean active, int createdBy, LocalDate created, int updatedBy, LocalDate updated){
         this.code = Objects.requireNonNull(code, "The code can not be null");
         this.name = Objects.requireNonNull(name, "The name can not be null");
         this.description = Objects.requireNonNullElse(description, "no description");

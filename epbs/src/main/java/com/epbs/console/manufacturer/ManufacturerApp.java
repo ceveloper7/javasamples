@@ -7,6 +7,8 @@ import com.epbs.util.Utilities;
 
 import java.io.IOException;
 import java.security.Key;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,10 +18,12 @@ public class ManufacturerApp {
     private static final int CREATE_MANUFACTURER = 1;
     private static final int UPDATE_MANUFACTURER = 2;
     private static final int SEARCH_MANUFACTURER = 3;
-    private static final int DELETE_MANUFACTURER = 4;
-    private static final int EXIT = 5;
+    private static final int PRINT_ALL_MANUFACTURER = 4;
+    private static final int DELETE_MANUFACTURER = 5;
+    private static final int EXIT = 6;
 
-    Manufacturer manufacturer = new Manufacturer();
+    Manufacturer manufacturer;
+    ArrayList<Manufacturer> manufacturers = new ArrayList<>();
 
     public void doSetup(){
         startOperations();
@@ -45,7 +49,7 @@ public class ManufacturerApp {
     }
 
     private String manufacturerCode(){
-        return manufacturer.getName().substring(0,2);
+        return manufacturer.getName().substring(0,3);
     }
 
     private void manufacturerName(){
@@ -81,8 +85,9 @@ public class ManufacturerApp {
         Screen.displayMessageLine("1 - Add new Manufacturer");
         Screen.displayMessageLine("2 - Update Manufacturer");
         Screen.displayMessageLine("3 - Search Manufacturer");
-        Screen.displayMessageLine("4 - Delete Manufacturer");
-        Screen.displayMessageLine("5 - Exit");
+        Screen.displayMessageLine("4 - Print all Manufacturer");
+        Screen.displayMessageLine("5 - Delete Manufacturer");
+        Screen.displayMessageLine("6 - Exit");
         String userInput = "";
         try{
             userInput = Keypad.getInput();
@@ -99,12 +104,48 @@ public class ManufacturerApp {
 
     private void addNewManufacturer(){
         try{
+            manufacturer = new Manufacturer();
             manufacturerId();
             manufacturerName();
+            manufacturerDescription();
+
+            manufacturer.setActive('Y');
+            manufacturer.setCreatedBy(1);
+            manufacturer.setCreated(LocalDate.now());
+            manufacturer.setUpdatedBy(1);
+            manufacturer.setUpdated(LocalDate.now());
+
+            Screen.displayMessageLine("Save manufacturer data (Y/N) [Y]: ");
+            String yesNo = Keypad.getInput();
+            if((yesNo.isBlank() || yesNo.trim().isEmpty() || "y".equalsIgnoreCase(yesNo))){
+                manufacturers.add(manufacturer);
+                Screen.displayMessageLine("Manufacturer added successfully");
+            }else{
+                Screen.displayMessageLine("Manufacturer not added");
+            }
         }
         catch (Exception ex){
             throw new RuntimeException();
         }
+    }
+
+    private void deleteManufacturer(){
+        Screen.displayMessageLine("Enter Manufacturer Id: ");
+        try{
+            String userInput = Keypad.getInput();
+            if(!Utilities.isDigit(userInput)){
+                LOGGER.log(Level.SEVERE, "Only integer id");
+            }
+            int manufacturerId = Integer.parseInt(userInput);
+
+            manufacturers.removeIf(manu -> manu.getId() == manufacturerId);
+        }catch (IOException ex){
+            LOGGER.log(Level.SEVERE, "");
+        }
+    }
+
+    private void printAllManufacturers(){
+        manufacturers.forEach(System.out::println);
     }
 
     private void startOperations(){
@@ -115,6 +156,18 @@ public class ManufacturerApp {
                 case CREATE_MANUFACTURER:
                     addNewManufacturer();
                     break;
+                case PRINT_ALL_MANUFACTURER:
+                    printAllManufacturers();
+                    break;
+                case DELETE_MANUFACTURER:
+                    deleteManufacturer();
+                    break;
+                case EXIT :
+                    Screen.displayMessage("\nExiting main menu...");
+                    userExited = true;
+                    break;
+                default:
+                    Screen.displayMessageLine("Invalid menu option.");
             }
         }
     }

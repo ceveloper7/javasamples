@@ -8,7 +8,7 @@ public class Manufacturer {
     private String code;
     private String name;
     private String description;
-    private boolean active;
+    private char active;
 
     private int createdBy;
     private LocalDate created;
@@ -18,7 +18,7 @@ public class Manufacturer {
     public Manufacturer(){
     }
 
-    public Manufacturer(String name, String code, String description, boolean active, int createdBy, LocalDate created, int updatedBy, LocalDate updated){
+    public Manufacturer(String name, String code, String description, char active, int createdBy, LocalDate created, int updatedBy, LocalDate updated){
         this.code = Objects.requireNonNull(code, "The code can not be null");
         this.name = Objects.requireNonNull(name, "The name can not be null");
         this.description = Objects.requireNonNullElse(description, "no description");
@@ -72,11 +72,11 @@ public class Manufacturer {
         this.description = description;
     }
 
-    public boolean isActive() {
+    public char isActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(char active) {
         this.active = active;
     }
 

@@ -7,18 +7,12 @@ import java.util.Objects;
  * Subclass or derived class or child class Assembly
  * Relationship: An Assembly is a Part. each Assembly object is an object of the Superclass Part.
  */
-public class Assembly extends Part{
+public class Assembly extends Component{
     private boolean topLevel;
     private Manufacturer manufacturer;
 
-    public Assembly(){
-        super();
-        this.topLevel = false;
-        this.manufacturer = null;
-    }
-
-    public Assembly(int partNo, String name, String description, boolean kit, boolean active,  int createdBy, LocalDate created, int updatedBy, LocalDate updated,  boolean topLevel, Manufacturer manufacturer){
-        super(partNo, name, description, kit, active, createdBy, created, updatedBy, updated);
+    public Assembly(int partNo, String name, String description, boolean active,  int createdBy, LocalDate created, int updatedBy, LocalDate updated,  boolean topLevel, Manufacturer manufacturer){
+        super(partNo, name, description, active, createdBy, created, updatedBy, updated);
         this.topLevel =  topLevel;
         this.manufacturer = manufacturer;
     }
@@ -53,7 +47,7 @@ public class Assembly extends Part{
     }
 
     @Override
-    public String toString(){
-        return "Manufacturer code: " + manufacturer.getCode() + ", " + super.toString();
+    public String toString() {
+        return "Component Assembly[" + manufacturer.getCode() + super.getPartNo() + ", " + super.getName();
     }
 }

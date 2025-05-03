@@ -6,7 +6,7 @@ import java.util.Objects;
 /**
  * Superclass Item
  */
-public class Part extends Component {
+public non-sealed class  Part extends Component {
 
     private boolean kit;
 

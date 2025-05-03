@@ -7,7 +7,7 @@ import java.util.Objects;
  * Subclass or derived class or child class Assembly
  * Relationship: An Assembly is a Part. each Assembly object is an object of the Superclass Part.
  */
-public class Assembly extends Component{
+public non-sealed class Assembly extends Component{
     private boolean topLevel;
     private Manufacturer manufacturer;
 

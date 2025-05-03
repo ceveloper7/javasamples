@@ -3,7 +3,7 @@ package com.epbs.model;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public abstract class Component {
+public abstract sealed class Component permits Part, Assembly {
     private int partNo;
     private String name;
     private String description;

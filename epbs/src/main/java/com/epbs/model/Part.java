@@ -52,7 +52,7 @@ public non-sealed class  Part extends Component implements Comparable<Part>{
      */
     @Override
     public int compareTo(Part other){
-        return super.getPartNo() - other.getPartNo();
+        return Integer.compare(super.getPartNo(), other.getPartNo());
     }
 
 }

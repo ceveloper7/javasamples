@@ -53,6 +53,6 @@ public non-sealed class Assembly extends Component implements Comparable<Assembl
 
     @Override
     public int compareTo(Assembly other){
-        return super.getPartNo() - other.getPartNo();
+        return Integer.compare(super.getPartNo(), other.getPartNo());
     }
 }

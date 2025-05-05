@@ -7,7 +7,7 @@ import java.util.Objects;
  * Subclass or derived class or child class Assembly
  * Relationship: An Assembly is a Part. each Assembly object is an object of the Superclass Part.
  */
-public non-sealed class Assembly extends Component{
+public non-sealed class Assembly extends Component implements Comparable<Assembly>{
     private boolean topLevel;
     private Manufacturer manufacturer;
 
@@ -49,5 +49,10 @@ public non-sealed class Assembly extends Component{
     @Override
     public String toString() {
         return "Component Assembly[" + manufacturer.getCode() + super.getPartNo() + ", " + super.getName();
+    }
+
+    @Override
+    public int compareTo(Assembly other){
+        return super.getPartNo() - other.getPartNo();
     }
 }

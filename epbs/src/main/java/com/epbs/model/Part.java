@@ -6,7 +6,7 @@ import java.util.Objects;
 /**
  * Superclass Item
  */
-public non-sealed class  Part extends Component {
+public non-sealed class  Part extends Component implements Comparable<Part>{
 
     private boolean kit;
 
@@ -42,6 +42,17 @@ public non-sealed class  Part extends Component {
     @Override
     public String toString(){
         return "Component Part[" + super.getPartNo() + ", " + super.getName() +  "]";
+    }
+
+    /**
+     * Sort by partNo
+     * @param other the object to be compared.
+     * @return negative, si el primer part es menor que other. Sera 0 si ambos tienen el mismo partNo
+     * Sera postivo si el primer part es mayor que other
+     */
+    @Override
+    public int compareTo(Part other){
+        return super.getPartNo() - other.getPartNo();
     }
 
 }

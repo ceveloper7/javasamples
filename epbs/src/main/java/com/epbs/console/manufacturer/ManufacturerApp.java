@@ -153,21 +153,11 @@ public class ManufacturerApp {
         while (!userExited){
             int manufacturerMainMenu = displayMainMenu();
             switch (manufacturerMainMenu){
-                case CREATE_MANUFACTURER:
-                    addNewManufacturer();
-                    break;
-                case PRINT_ALL_MANUFACTURER:
-                    printAllManufacturers();
-                    break;
-                case DELETE_MANUFACTURER:
-                    deleteManufacturer();
-                    break;
-                case EXIT :
-                    Screen.displayMessage("\nExiting main menu...");
-                    userExited = true;
-                    break;
-                default:
-                    Screen.displayMessageLine("Invalid menu option.");
+                case CREATE_MANUFACTURER -> addNewManufacturer();
+                case PRINT_ALL_MANUFACTURER -> printAllManufacturers();
+                case DELETE_MANUFACTURER -> deleteManufacturer();
+                case EXIT -> userExited = true;
+                default -> Screen.displayMessageLine("Invalid menu option.");
             }
         }
     }

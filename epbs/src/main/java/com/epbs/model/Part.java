@@ -47,8 +47,8 @@ public non-sealed class  Part extends Component implements Comparable<Part>{
     /**
      * Sort by partNo
      * @param other the object to be compared.
-     * @return negative, si el primer part es menor que other. Sera 0 si ambos tienen el mismo partNo
-     * Sera postivo si el primer part es mayor que other
+     * @return negative, si this part tiene un partNo menor que other. Sera 0 si ambos tienen el mismo partNo
+     * Sera postivo si this part tiene un partNo mayor que other
      */
     @Override
     public int compareTo(Part other){

@@ -9,6 +9,7 @@ import java.time.Instant;
 /**
  * 6.3 Inner class
  * Program1 = TalkingClock
+ * Internal name of a inner class: Program1$TimePrinter
  */
 public class Program1 {
     private int interval;
@@ -20,7 +21,8 @@ public class Program1 {
     }
 
     public void start(){
-        var listener = new TimePrinter();
+        // create inner class object
+        var listener = this.new TimePrinter();
         var timer = new Timer(interval, listener);
         timer.start();
     }
@@ -29,7 +31,8 @@ public class Program1 {
         @Override
         public void actionPerformed(ActionEvent event){
             System.out.println("At the tone, the time is " + Instant.ofEpochMilli(event.getWhen()));
-            if(beep)
+            // access to outer class instance field
+            if(Program1.this.beep)
                 Toolkit.getDefaultToolkit().beep();
         }
     }

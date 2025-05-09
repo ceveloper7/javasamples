@@ -5,8 +5,7 @@ import org.ceva.ch05.inheritance.Person;
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDate;
-import java.util.Objects;
-import java.util.Properties;
+import java.util.*;
 import java.util.random.RandomGenerator;
 
 /*
@@ -180,5 +179,62 @@ public class Employee  extends Person implements Cloneable, Comparable<Employee>
 
     public Employee clone()throws CloneNotSupportedException{
         return (Employee) super.clone();
+    }
+
+    public static List<Employee> payroll(){
+
+        return Arrays.asList(
+                new Employee("Juan Fernando", 800000, 2020, 10, 11),
+                new Employee("Ana Sofía", 750000, 2021, 5, 15),
+                new Employee("Carlos Andrés", 920000, 2019, 11, 28),
+                new Employee("Laura Camila", 680000, 2022, 3, 10),
+                new Employee("Diego Alejandro", 880000, 2020, 7, 22),
+                new Employee("Valentina Isabel", 710000, 2023, 1, 5),
+                new Employee("Mateo Santiago", 950000, 2018, 9, 18),
+                new Employee("Sofía Antonella", 650000, 2024, 4, 1),
+                new Employee("Sebastián David", 820000, 2021, 12, 8),
+                new Employee("Martina Emilia", 780000, 2019, 6, 20),
+                new Employee("Nicolás Benjamín", 910000, 2022, 2, 14),
+                new Employee("Emilia Guadalupe", 700000, 2023, 8, 25),
+                new Employee("Gabriel Ignacio", 850000, 2020, 1, 30),
+                new Employee("Florencia Agustina", 730000, 2024, 5, 7),
+                new Employee("Joaquín Salvador", 980000, 2018, 10, 2),
+                new Employee("Victoria Montserrat", 670000, 2021, 7, 12),
+                new Employee("Benicio Tomás", 890000, 2019, 3, 16),
+                new Employee("Catalina Esperanza", 760000, 2022, 9, 29),
+                new Employee("Máximo Jerónimo", 930000, 2020, 4, 5),
+                new Employee("Renata Paz", 690000, 2023, 11, 19),
+                new Employee("Agustín Baltazar", 810000, 2021, 6, 2),
+                new Employee("Isabella Trinidad", 790000, 2019, 12, 23),
+                new Employee("Santino Uriel", 960000, 2022, 7, 8),
+                new Employee("Camila Belén", 660000, 2024, 2, 21),
+                new Employee("Thiago Ezequiel", 870000, 2018, 8, 14),
+                new Employee("Julieta Pilar", 720000, 2023, 3, 27),
+                new Employee("Bautista Gael", 900000, 2020, 9, 1),
+                new Employee("Antonella Abril", 740000, 2021, 4, 17),
+                new Employee("Lorenzo Valentín", 990000, 2019, 10, 10),
+                new Employee("Josefina Candela", 640000, 2022, 1, 24),
+                new Employee("Mateo Salvador", 830000, 2023, 12, 3),
+                new Employee("Emilia Paz", 770000, 2020, 6, 9),
+                new Employee("Benjamín Ignacio", 940000, 2024, 3, 22),
+                new Employee("Martina Guadalupe", 705000, 2018, 11, 5),
+                new Employee("Lucas Alexander", 860000, 2021, 8, 18),
+                new Employee("Sofía Trinidad", 735000, 2019, 5, 30),
+                new Employee("Agustín Mateo", 970000, 2022, 10, 13),
+                new Employee("Valentina Emilia", 665000, 2023, 4, 26),
+                new Employee("Carlos Sebastián", 840000, 2020, 1, 9),
+                new Employee("Ana Florencia", 785000, 2024, 6, 21),
+                new Employee("Diego Joaquín", 915000, 2018, 9, 4),
+                new Employee("Laura Victoria", 695000, 2021, 7, 17),
+                new Employee("Nicolás Benicio", 825000, 2019, 3, 1),
+                new Employee("Isabella Catalina", 755000, 2022, 8, 24),
+                new Employee("Gabriel Máximo", 955000, 2020, 5, 7),
+                new Employee("Florencia Renata", 675000, 2023, 12, 11),
+                new Employee("Joaquín Agustín", 895000, 2021, 2, 25),
+                new Employee("Victoria Isabella", 715000, 2019, 9, 8),
+                new Employee("Benicio Carlos", 925000, 2022, 4, 21),
+                new Employee("Catalina Ana", 655000, 2024, 1, 4),
+                new Employee("Máximo Diego", 805000, 2018, 10, 17)
+        );
     }
 }

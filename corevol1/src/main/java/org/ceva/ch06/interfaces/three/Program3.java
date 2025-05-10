@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.time.Instant;
 
 /**
- * Local inner class - Accessing varaibles from outer methods
+ * 6.3.4 Local inner class - Accessing varaibles from outer methods
  */
 public class Program3 {
 

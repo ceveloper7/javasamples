@@ -7,11 +7,11 @@ import java.awt.event.ActionListener;
 import java.time.Instant;
 
 /**
- * Inner class anonimas
+ * 6.3.6 Inner class anonimas
  */
 public class Program4 {
     public void start(int interval, boolean beep){
-        // podemos tener inner class sin dar un nombre a la clase
+        // Anonymous inner class
         var listener = new ActionListener(){
             public void actionPerformed(ActionEvent event){
                 System.out.println("At the tone, the time is " + Instant.ofEpochMilli(event.getWhen()));

@@ -100,9 +100,9 @@ public class DatabaseInstance implements Serializable, Cloneable {
         if(m.matches()){
             params = m.group(1).split(",");
             connectionMap = new TreeMap<String, String>();
-            for(int i = 0; i < params.length; i++){
-                kv = params[i].split("=");
-                if(kv.length == 2){
+            for (String param : params) {
+                kv = param.split("=");
+                if (kv.length == 2) {
                     connectionMap.put(kv[0], kv[1]);
                 }
             }

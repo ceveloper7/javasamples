@@ -4,7 +4,7 @@ package com.ceva.ex1.ch02.loops;
  * Loop: Displaying trees with Ornaments
  */
 public class Program11 {
-    private static final int width = 5;
+    private static final int width = 35;
 
     public static void main(String[] args) {
         for ( int stars = 1, spaces = (width - 1) / 2; stars <= width; stars += 2, spaces-- ) {

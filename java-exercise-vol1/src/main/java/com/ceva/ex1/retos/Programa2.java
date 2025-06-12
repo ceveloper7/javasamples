@@ -12,6 +12,26 @@ import java.util.Arrays;
 
 public class Programa2 {
 
+    private static void serieFibV2(){
+        int n = 50; // Cantidad de números de Fibonacci a mostrar
+
+        // Inicializamos los dos primeros números de la serie
+        long a = 0;
+        long b = 1;
+
+        System.out.println("Los primeros " + n + " números de la serie Fibonacci son:");
+
+        for (int i = 0; i < n; i++) {
+            System.out.print(a + " ");
+
+            // Calculamos el siguiente número de la serie
+            long siguiente = a + b;
+            a = b; // 'a' toma el valor de 'b'
+            b = siguiente; // 'b' toma el valor del siguiente número calculado
+        }
+        System.out.println(); // Salto de línea al final
+    }
+
     private static void simpleFibSerie(){
         int[] serie = new int[50];
         long[] result = new long[serie.length];
@@ -28,5 +48,6 @@ public class Programa2 {
 
     public static void main(String[] args) {
         simpleFibSerie();
+        serieFibV2();
     }
 }

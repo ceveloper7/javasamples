@@ -31,7 +31,7 @@ public class SaltySnook {
     }
 
     public static void main(String[] args) {
-        String[] flags = {"Argentina", "Chile", "Peru", "Venezuela", "Peru", "Peru", "Peru", "Perú" };
+        String[] flags = { "F", "DO", "MOS", "MOS", "MOS", "MOS", "WES" };
         System.out.println(isProbablyApproaching(flags));
     }
 }

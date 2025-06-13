@@ -72,12 +72,17 @@ public class DiceGame {
     }
 
     public static void main(String[] args) {
-        System.out.println("Lanzamos los dados: " + Arrays.toString(DiceGame.shuffleDice()));
-        System.out.println("Son iguales los numeros: " + isHomogeneous(new int[]{1, 1, 1, 1}));
-        System.out.println("Son iguales los numeros: " + isHomogeneous(new int[]{1, 1, 1, 2, 2 }));
-        System.out.println("La ocurrencia de numeros: " + Arrays.toString(DiceGame.occurrences(new int[]{1, 1, 2, 3, 4}))); // [2,1,1,1,0,0]
-        System.out.println("is Full house: " + isFullHouse(new int[]{1, 1, 1, 2, 2}));
-        System.out.println("is full house: " + isFullHouse(new int[]{1, 1, 1, 1}));
-        printDiceValues(new int[]{2,4,2,4,6});
+        int[] shuffle = shuffleDice();
+        System.out.println( Arrays.toString( shuffle ) );
+
+        System.out.println( isHomogeneous( new int[]{ 1, 1, 1, 1, 1 } ) );
+        System.out.println( isHomogeneous( new int[]{ 1, 1, 1, 2, 2 } ) );
+
+        System.out.println( Arrays.toString( occurrences( new int[]{ 1, 1, 2, 3, 4 } ) ) );
+
+        System.out.println( isFullHouse( new int[]{ 1, 1, 1, 2, 2 } ) );
+        System.out.println( isFullHouse( new int[]{ 1, 1, 1, 1, 1 } ) );
+
+        printDiceValues( shuffle );
     }
 }

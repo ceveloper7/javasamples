@@ -29,5 +29,13 @@ public class Quizz1 {
 
         System.arraycopy(hooey, bushwa+1, shuck, bushwa, hooey.length - bushwa - 1);
         System.out.println(Arrays.toString(shuck)); //[1,2,4]
+
+        Object[] array1 = {"Anne Bonny", "Fortune", "Sir Francis Drake", new int[]{1,2,3}};
+        Object[] array2 = {"Anne Bonny", "Fortune", "Sir Francis Drake", new int[]{1,2,3}};
+
+        System.out.println(array1 == array2);
+        System.out.println(array1.equals(array2));  // false
+        System.out.println(Arrays.equals(array1, array2)); // false
+        System.out.println(Arrays.deepEquals(array1, array2)); // true
     }
 }

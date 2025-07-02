@@ -64,6 +64,7 @@
         <module>spring-framework-ch04-ex15</module>
         <module>spring-framework-ch04-ex16</module>
         <module>epbs</module>
+        <module>java-the-way</module>
     </modules>
 
     <properties>

@@ -6,12 +6,12 @@ package sec4;
  * 2. Generar el dibujo
  * 3. Mostrar el resultado en pantalla
  */
-public class AHCharacterMatrix {
+public class AHCharacterMatrixV2 {
     // espacio de memoria
     private char[][] canvas;
 
     // inicializar el canvas
-    public AHCharacterMatrix(int cols, int rows){
+    public AHCharacterMatrixV2(int cols, int rows){
         canvas = new char[rows][cols];
         clear();
     }
@@ -22,6 +22,14 @@ public class AHCharacterMatrix {
                 canvas[r][c] = ' ';
             }
         }
+    }
+
+    public int getWidth(){
+        return canvas[0].length;
+    }
+
+    public int getHeight(){
+        return canvas.length;
     }
 
     /**
@@ -64,14 +72,14 @@ public class AHCharacterMatrix {
     }
 
     public static void main(String[] args) {
-        AHCharacterMatrix graph = new AHCharacterMatrix(80,25);
-        graph.rectangle(0,0,79,24);
+        AHCharacterMatrixV2 graph = new AHCharacterMatrixV2(80,25);
+        graph.rectangle(0,0, graph.getWidth()-1, graph.getHeight()-1);
 
         // draw seno function
-        for(int i = 0; i < 80; i++){
-            double value = Math.sin(Math.toRadians((2*360.0/80) * i));
-            value = value * 10;
-            graph.setCharAt(i, (int)(12 - value), 'x');
+        for(int i = 0; i < graph.getWidth(); i++){
+            double value = Math.sin(Math.toRadians((2*360.0/ graph.getWidth()) * i));
+            value = value * ((graph.getHeight()/2) - 2);
+            graph.setCharAt(i, (int)(graph.getHeight()/2 - value), 'x');
         }
 
         //sample

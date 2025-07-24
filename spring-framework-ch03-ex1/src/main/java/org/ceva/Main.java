@@ -9,8 +9,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  */
 public class Main {
     public static void main(String[] args) {
+        // 1. Create Spring Context with beans configured in HelloWorldConfiguration class
         var context = new AnnotationConfigApplicationContext(HelloWorldConfiguration.class);
-        var renderer = context.getBean(MessageRenderer.class);
+        // 2. Get a reference to renderer bean
+        var renderer = context.getBean("renderer", MessageRenderer.class);
 
         renderer.render();
     }

@@ -65,6 +65,7 @@
         <module>spring-framework-ch04-ex16</module>
         <module>epbs</module>
         <module>java-the-way</module>
+        <module>data-oriented-programming</module>
     </modules>
 
     <properties>

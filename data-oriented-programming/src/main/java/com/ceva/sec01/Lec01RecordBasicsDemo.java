@@ -6,7 +6,13 @@ import org.slf4j.LoggerFactory;
 public class Lec01RecordBasicsDemo {
     private static final Logger log = LoggerFactory.getLogger(Lec01RecordBasicsDemo.class);
 
-    record Person(String firstName, String lastName){}
+    record Person(String firstName, String lastName){
+
+        // we can not declare an extra fiel in a record, but we can add instance methods
+        public String fullName(){
+            return this.firstName + " " + this.lastName;
+        }
+    }
 
     public static void main(String[] args) {
         var person1 = new Person("John", "Doe");

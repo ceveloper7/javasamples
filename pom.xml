@@ -66,6 +66,8 @@
         <module>epbs</module>
         <module>java-the-way</module>
         <module>data-oriented-programming</module>
+        <module>DataStructure</module>
+
     </modules>
 
     <properties>

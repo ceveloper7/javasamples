@@ -15,6 +15,7 @@ public class ByConstructorAutowiring {
     public static void main(String[] args) {
         var context = new AnnotationConfigApplicationContext(ProjectConfig.class);
 
+        // el bean target dispara el proceso de autowiring
         var target = context.getBean(Target.class);
         logger.info("target: Created target? {}" , target != null);
         logger.info("target: Injected bar? {}" , target.bar != null);

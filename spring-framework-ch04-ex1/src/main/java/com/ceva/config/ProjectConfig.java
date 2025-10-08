@@ -20,6 +20,7 @@ public class ProjectConfig {
 
     @Bean(initMethod = "init")
     public Singer singerTwo(){
+        // la propiedad name no esta configurada
         Singer singer = new Singer();
         singer.setAge(42);
         return singer;

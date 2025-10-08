@@ -30,6 +30,11 @@ public class Singer implements InitializingBean {
                 .toString();
     }
 
+    /**
+     * Luego que termina la configuracion del bean Spring ejecuta este metodo.
+     * Podemos verificar que la configuracion del bean es correcta y si no se han
+     * configurado sus propiedades podemos asignarles un valor por defecto.
+     */
     @Override
     public void afterPropertiesSet() throws Exception {
         logger.info("Initializing bean using 'afterPropertiesSet()'");

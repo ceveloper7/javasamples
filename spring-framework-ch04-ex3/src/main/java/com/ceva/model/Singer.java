@@ -30,6 +30,7 @@ public class Singer {
                 .toString();
     }
 
+    // Usando JSR-250 @PostConstruct annotation
     @PostConstruct
     public void postConstruct() throws Exception {
         logger.info("Initializing bean using 'afterPropertiesSet()'");

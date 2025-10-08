@@ -7,6 +7,7 @@ import com.ceva.model.Util;
 import java.util.List;
 import java.util.function.Predicate;
 
+
 public class ComposingPredicates {
 
     // Predicate and, negate, or
@@ -34,7 +35,7 @@ public class ComposingPredicates {
 
     public static void main(String[] args) {
         ComposingPredicates p = new ComposingPredicates();
-        p.getRedAndHeavyApple();
+        //p.getRedAndHeavyApple();
         p.getRedAndHeavyAppleOrBlue();
     }
 }

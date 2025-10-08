@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 /*
  * Cuando a spring no se le dice que hacer, llama al constructor sin argumentos, lo que significa que ninguna de las propiedades sera inyectadas
  * si no se le dice que hacer y se solicita una instancia entonces lanza un error.
+ * @Lazy -> informa a Spring instaciar al bean solo cuando este es primero solicitado.
  */
 @Component
 @Lazy
@@ -20,11 +21,13 @@ public class Target {
     public Foo fooTwo;
     public Bar bar;
 
+    // si ningun constructor posee @Autowired, se llama al constructor sin parametros (si existiese)
+    // si no hay un constructor sin argumento, se lanza la excepcion BeanInstantiationException
     public Target(){
         logger.info("--> Target() called");
     }
 
-    @Autowired
+    //@Autowired
     public Target(@Qualifier("foo") Foo foo){
         this.fooOne = foo;
         logger.info("--> Target(Foo) called");

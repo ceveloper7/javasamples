@@ -22,9 +22,10 @@ public class Singer {
     }
 
     /*
-     * Callback Initialization
+     * Metodo  usado como Callback Initialization
      * Verificamos si se ha establecido el valor a la propiedad name, si no, asignamos un name por defecto
      * Verificamos si se ha establecido el valor a la propiedad age, si no, lanzamos excepcion
+     * el metodo de inicializacion no puede recibir ningun argumento
      */
     private void init(){
         logger.info("Inicializando bean");

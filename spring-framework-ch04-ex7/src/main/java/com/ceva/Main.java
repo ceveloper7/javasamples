@@ -6,8 +6,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Main {
     public static void main(String[] args) {
         var ctx = new AnnotationConfigApplicationContext(ProjectConfig.class);
+        // para llamar al metodo destroy en un bean es necesario cerrar el ApplicationContext
         ctx.close();
-        // ctx.registerShutdownHook();
+        // usado en aplicaciones stand-alone
+        //ctx.registerShutdownHook();
 
     }
 }

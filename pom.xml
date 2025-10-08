@@ -67,6 +67,7 @@
         <module>java-the-way</module>
         <module>data-oriented-programming</module>
         <module>DataStructure</module>
+        <module>algorithms</module>
 
     </modules>
 

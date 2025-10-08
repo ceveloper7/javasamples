@@ -22,6 +22,10 @@ public class Singer implements ApplicationContextAware {
         guitar.sing();
     }
 
+    /**
+     * Metodo setter automaticamente detectado por el IoC de Spring. Se inyecta el ApplicationContext, esto se realiza
+     * cuando el constructor de bean es llamado
+     */
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.ctx = applicationContext;

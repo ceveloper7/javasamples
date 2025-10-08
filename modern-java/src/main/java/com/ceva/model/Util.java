@@ -8,6 +8,7 @@ import java.util.function.Predicate;
 
 public final class Util {
 
+    // Utilizamos un Predicate cuando necesitamos representar un expresion boolean que usa un objeto de tipo T
     public static <T> List<T> filter(List<T> list, Predicate<T> p){
         List<T> results = new ArrayList<>();
         for (T t : list){
@@ -17,11 +18,13 @@ public final class Util {
         return results;
     }
 
+    // Usamos un Consumer cuando necesitamos acceder a un objeto T y realizamos algunas operaciones sobre el
     public static  <T> void forEach(List<T> list, Consumer<T> c){
         for(T t : list){
             c.accept(t);
         }
     }
+
 
     public static <T,R> List<R> map(List<T> list, Function<T, R> f){
         List<R> results = new ArrayList<>();

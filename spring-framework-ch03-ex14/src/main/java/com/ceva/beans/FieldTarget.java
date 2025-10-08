@@ -9,6 +9,9 @@ import org.springframework.stereotype.Component;
 @Lazy
 public class FieldTarget {
 
+    /**
+     * Spring injecta las dependencias por tipo cuando los campos estan anotados directamente con @Autowired
+     */
     @Autowired
     @Qualifier("foo")
     public Foo fooOne;

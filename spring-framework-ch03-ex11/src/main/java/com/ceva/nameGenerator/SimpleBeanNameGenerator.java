@@ -12,7 +12,9 @@ public class SimpleBeanNameGenerator extends AnnotationBeanNameGenerator
     // retornamos un nombre del bean compuesto
     @Override
     protected String buildDefaultBeanName(BeanDefinition definition, BeanDefinitionRegistry registry) {
-        var beanName = definition.getBeanClassName().substring(definition.getBeanClassName().lastIndexOf(".") + 1).toLowerCase(Locale.ROOT);
+        var beanName = definition.getBeanClassName()
+                .substring(definition.getBeanClassName().lastIndexOf(".") + 1)
+                .toLowerCase(Locale.ROOT);
         var uid = UUID.randomUUID().toString().replace("-","").substring(0,8);
         return beanName + "-" + uid;
     }

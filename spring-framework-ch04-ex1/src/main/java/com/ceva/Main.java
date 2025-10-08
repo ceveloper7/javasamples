@@ -18,6 +18,7 @@ public class Main {
     public static void main(String[] args) {
         var ctx = new AnnotationConfigApplicationContext(ProjectConfig.class);
 
+        // obtenemos los tres bean del AnnotationConfigApplicationContext
         getBean("singerOne", ctx);
         getBean("singerTwo", ctx);
         getBean("singerThree", ctx);
@@ -29,6 +30,7 @@ public class Main {
             logger.info("found: {}", bean);
             return bean;
         }
+        // envolvemos IllegalArgumentException lanzado por el bean Singer en un BeanCreationException
         catch (BeanCreationException ex){
             logger.error("An error ocurred in bean configuration: " + ex.getMessage());
             return null;

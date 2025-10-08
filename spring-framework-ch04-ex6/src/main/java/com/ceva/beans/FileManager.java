@@ -23,6 +23,7 @@ public class FileManager implements DisposableBean {
         }
     }
 
+    // este metodo es llamado justo antes que el bean sea destruido
     @Override
     public void destroy() throws Exception {
         logger.info("Calling destroy() method on bean of type {}", FileManager.class);

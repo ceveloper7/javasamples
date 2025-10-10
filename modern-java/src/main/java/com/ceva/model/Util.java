@@ -25,7 +25,7 @@ public final class Util {
         }
     }
 
-
+    // Tomamos un objeto generico tipo T como input y retornamos un objeto generico tipo R
     public static <T,R> List<R> map(List<T> list, Function<T, R> f){
         List<R> results = new ArrayList<>();
         for (T t : list){

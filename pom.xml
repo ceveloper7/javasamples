@@ -68,6 +68,7 @@
         <module>data-oriented-programming</module>
         <module>DataStructure</module>
         <module>algorithms</module>
+        <module>domain-driven-design</module>
 
     </modules>
 

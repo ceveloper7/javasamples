@@ -2,7 +2,7 @@ package com.ceva.model;
 
 public enum Color {
     UNKNOWN,
-    RED,
+    BLUE,
     GREEN,
-    BLUE
+    RED
 }

@@ -27,7 +27,7 @@ public class ComposingPredicates {
 
         Predicate<Apple> redApple = (apple)-> apple.getColor() == Color.RED;
         Predicate<Apple> redAndHeavyOrBlueApples = redApple
-                .and((apple) -> apple.getWeight() > 280)
+                .and((apple) -> apple.getWeight() > 80)
                 .or((apple) -> apple.getColor() == Color.BLUE);
 
         System.out.println(Util.filter(inventory, redAndHeavyOrBlueApples));

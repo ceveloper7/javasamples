@@ -10,18 +10,27 @@ public class MessageDigestFactoryBean implements FactoryBean<MessageDigest>, Ini
 
     private MessageDigest messageDigest = null;
 
+    /**
+     * Spring llama este metodo para obtener el objeto MessageDigest creado por el FactoryBean
+     */
     @Override
     public MessageDigest getObject() throws Exception {
         return messageDigest;
     }
 
+    // el indicamos a Spring el tipo de objeto que retornara el FactoryBean
     @Override
     public Class<MessageDigest> getObjectType() {
         return MessageDigest.class;
     }
 
+    // informamos a Spring que el FactoryBean esta administrado por una instancia singleton.
     public boolean isSingleton(){
         return true;
+    }
+
+    public void setAlgorithmName(String algorithmName){
+        this.algorithmName = algorithmName;
     }
 
     @Override
@@ -30,7 +39,4 @@ public class MessageDigestFactoryBean implements FactoryBean<MessageDigest>, Ini
         messageDigest = MessageDigest.getInstance(algorithmName);
     }
 
-    public void setAlgorithmName(String algorithmName){
-        this.algorithmName = algorithmName;
-    }
 }

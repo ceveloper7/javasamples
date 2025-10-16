@@ -12,7 +12,12 @@ public class ShutDownHookBean implements ApplicationContextAware {
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         // validamos para ver si soporta registerShutdownHook
         if(ctx instanceof GenericApplicationContext){
-            // registramos un ShutdownHook en el ApplicationContext
+            /**
+             * Ya no ncesitamos registrar un ShutDownHook en el ApplicationContext
+             * ShutDownHook lo registramos en el bean ShutDownHookBean y este se
+             * encarga de llamar a registerShutDownHook() y cierra automaticamente el ApplicatonContext,
+             * se remueven lo hooks.
+             */
             ((GenericApplicationContext)ctx).registerShutdownHook();
         }
     }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class Person {
     private FullName name;
 
-    @Value("John Mayer")
+    @Value("Cosme Fulanito")
     public void setName(FullName name){
         this.name = name;
     }

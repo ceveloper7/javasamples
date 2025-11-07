@@ -70,6 +70,7 @@
         <module>algorithms</module>
         <module>domain-driven-design</module>
         <module>java-persistence-hibernate-spring-ch02</module>
+        <module>java-persistence-hibernate-spring-ch02-spring-data-jpa</module>
 
     </modules>
 

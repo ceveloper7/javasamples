@@ -14,7 +14,7 @@ public class ProfileDemo {
         //var profile = System.getProperty("spring.profiles.active");
 
         var ctx = new AnnotationConfigApplicationContext();
-        ctx.getEnvironment().setDefaultProfiles("kindergarten");
+        ctx.getEnvironment().setDefaultProfiles("highschool");
         //ctx.getEnvironment().setActiveProfiles(profile);
         ctx.register(KindergartenCfg.class, HighSchoolCgf.class);
         ctx.refresh();

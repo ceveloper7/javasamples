@@ -17,8 +17,9 @@ public class Sample1 {
 
         List<String> lowCaloricDishesName =
                 // menu.stream()
-                // parallelStream se usa para ejecutar el codigo en paralelo
+                // parallelStream se usa para ejecutar el codigo en paralelo usando multicore platform
                 menu.parallelStream()
+                // Encadenamiento de Operaciones:
                 // Seleccionamos platos menores a 400 calorias
                 .filter((dish)-> dish.getCalories() < 400)
                 // ordenamos la lista por calorias

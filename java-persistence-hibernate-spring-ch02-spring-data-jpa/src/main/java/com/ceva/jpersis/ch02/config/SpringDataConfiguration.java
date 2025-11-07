@@ -1,4 +1,4 @@
-package com.ceva.jpersis.ch02.springconfig;
+package com.ceva.jpersis.ch02.config;
 
 import jakarta.persistence.EntityManagerFactory;
 import org.springframework.context.annotation.Bean;

@@ -1,7 +1,7 @@
 package com.ceva.jpersis.ch02;
 
+import com.ceva.jpersis.ch02.config.SpringDataConfiguration;
 import com.ceva.jpersis.ch02.repositories.MessageRepository;
-import com.ceva.jpersis.ch02.springconfig.SpringDataConfiguration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -1,4 +1,4 @@
-package com.ceva.jpersis.ch02;
+package com.ceva.jpersis.ch02.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

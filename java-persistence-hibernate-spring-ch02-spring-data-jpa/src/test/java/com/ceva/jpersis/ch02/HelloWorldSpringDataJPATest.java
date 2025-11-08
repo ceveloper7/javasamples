@@ -1,6 +1,7 @@
 package com.ceva.jpersis.ch02;
 
-import com.ceva.jpersis.ch02.config.SpringDataConfiguration;
+import com.ceva.jpersis.ch02.config.JpaConfig;
+import com.ceva.jpersis.ch02.model.Message;
 import com.ceva.jpersis.ch02.repositories.MessageRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -12,7 +13,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.util.List;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = {SpringDataConfiguration.class})
+@ContextConfiguration(classes = {JpaConfig.class})
 public class HelloWorldSpringDataJPATest {
     @Autowired
     private MessageRepository messageRepository;

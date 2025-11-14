@@ -62,18 +62,27 @@ public class AC_ArraySearchingDemo {
         }
 
         arr3 = new int[m1 + m2];
+        // mientras haya elementos en arr1 y arr2 e i y j no haya llegado al final al fina del array
         while (i < m1 && j < m2) {
+            // si el elemento de arr1 es menor al elemento de arr2
             if (arr1[i] < arr2[j]) {
+                // copiamos el elemento menor a arr3
                 arr3[k] = arr1[i];
+                // avanzamos la posicion para arr3 y arr1
                 k++;
                 i++;
             } else if (arr2[j] < arr1[i]) {
+                // copiamos el elemento menor a arr3
                 arr3[k] = arr2[j];
+                // avanzamos la posicion de arr2 y arr3
                 j++;
-                k++;              } else {
+                k++;              }
+            else {
+                // copiamos el primero
                 arr3[k] = arr1[i];
                 k++;
                 i++;
+                // copiamos el segundo
                 arr3[k] = arr2[j];
                 k++;
                 j++;

@@ -37,16 +37,32 @@ public class AD_ArraySortsDemo {
         int pos = 0;
         int temp = 0;
 
+        /**
+         * 1. Para cada posicion de array
+         * 2. Asume que el primer elemento es el menor
+         * 3. Busca si hay otro elemento mas pequeno en el resto del array
+         * 4. SI lo encuentra, intercambia valores
+         * 5. Continua con la siguiente posicion.
+         */
         for(int i = 1; i < numberOfElements; i++){
+            // suponemos que el elemento actual es el mas chico
             min = arr[i - 1];
+            // almacenamos la posicion
             pos = i - 1;
+            // buscamos los valores mas pequenos hasta recorrer el resto del array
             for(int j = i; j < numberOfElements; j++){
+                // si encontramos un valor menos a min
                 if(arr[j] < min){
+                    // actualizamos min
                     min = arr[j];
+                    // actualizamos la posicion donde esta el valor menor
                     pos = j;
                 }
             }
+            // intercambio si se encontro un nuevo numero menor
+            // si el menor numero encontrado no esta en la posicion actual
             if(pos != i - 1){
+                // intercambiamos valores
                 temp = arr[pos];
                 arr[pos] = arr[i - 1];
                 arr[i - 1] = temp;

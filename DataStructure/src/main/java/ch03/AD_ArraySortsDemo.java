@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class AD_ArraySortsDemo {
     private Scanner scn = new Scanner(System.in);
-    private static final int MAX_SIZE = 5;
+    private static final int MAX_SIZE = 6;
     private int[] arr = new int[MAX_SIZE];
     private int choice = 0;
     private int numberOfElements = 0;
@@ -22,6 +22,7 @@ public class AD_ArraySortsDemo {
     private void printMenu(){
         System.out.println("*** Array Sort Techniques ***");
         System.out.println("1. Selection sort array");
+        System.out.println("2. Insertion sort array");
 
         choice = scn.nextInt();
     }
@@ -72,12 +73,33 @@ public class AD_ArraySortsDemo {
         printArrayElements();
     }
 
+    private void insertSortArray(){
+        // sub-arreglo arr[1] hasta arr[i-1]
+        for(int i = 1; i < numberOfElements; i++){
+            // guardamos el elemento actual
+            int key = arr[i];
+            // partimos del elemento inmediatamente anterior al seleccionado
+            int j = i - 1;
+            // Mientras no salgamos del arreglo y el elemento previo sea mayor que key
+            while(j >= 0 && arr[j] > key){
+                // movemos arr[j] una posición a la derecha para hacer espacio para key
+                arr[j + 1] = arr[j];
+                // Retrocedemos para seguir comparando hacia la izquierda
+                j = j - 1;
+            }
+            // colocamos key en el lugar correcto
+            arr[j+1] = key;
+        }
+        printArrayElements();
+    }
+
     private void process(){
         if(numberOfElements > MAX_SIZE){
             System.out.println("Overflow error");
         }else{
             switch (choice){
                 case 1 -> selectionSortArray();
+                case 2 -> insertSortArray();
                 default -> System.out.println("input value not accepted");
             }
         }

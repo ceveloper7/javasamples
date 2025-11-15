@@ -72,6 +72,7 @@
         <module>java-persistence-hibernate-spring-ch02</module>
         <module>java-persistence-hibernate-spring-ch02-spring-data-jpa</module>
         <module>clean-code</module>
+        <module>java-persistence-hibernate-spring-ch03</module>
 
     </modules>
 

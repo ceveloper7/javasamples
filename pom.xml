@@ -74,6 +74,7 @@
         <module>clean-code</module>
         <module>java-persistence-hibernate-spring-ch03</module>
         <module>java-design-patterns</module>
+        <module>spring-framework-ch06-jdbc-uno-plain</module>
 
     </modules>
 

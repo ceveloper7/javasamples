@@ -5,20 +5,21 @@ import com.ceva.model.Dish;
 import java.util.List;
 
 /**
- * dropWhile
+ * Slicing a stream using a predicate
  */
 public class Sample3 {
+    /**
+     * Seleccionamos los platos menores a 400 calorias, la seleccion se detiene cuando encuentra un plato
+     * que no cumple el predicado
+     */
     public static void main(String[] args) {
         List<Dish> menu = Dish.crearListaDePlatos();
 
-        List<Dish> filteredDish = menu.stream()
-                /**
-                 * mientras el predicado retorne true, los dishes se eliminaran, tan pronto el predicado retorna false
-                 * se detiene el procesamiento del stream y se retornan todos los elementos restantes en el stream
-                 */
-                .dropWhile(dish -> dish.getCalories() < 320)
+        List<Dish> filteredMenu = menu.stream()
+                .takeWhile(dish -> dish.getCalories() < 400)
                 .toList();
 
-        filteredDish.forEach(System.out::println);
+        filteredMenu.forEach(System.out::println);
+
     }
 }

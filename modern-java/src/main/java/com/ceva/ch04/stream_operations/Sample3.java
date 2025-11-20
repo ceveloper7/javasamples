@@ -5,7 +5,7 @@ import com.ceva.model.Dish;
 import java.util.List;
 
 /**
- * Stream terminal operation
+ * Stream terminal operations produce a result from a stream
  */
 public class Sample3 {
     public static void main(String[] args) {

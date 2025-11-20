@@ -5,19 +5,20 @@ import com.ceva.model.Dish;
 import java.util.List;
 
 /**
- * Truncating stream with limit operation
+ * dropWhile
  */
 public class Sample4 {
     public static void main(String[] args) {
-
         List<Dish> menu = Dish.crearListaDePlatos();
 
-        // seleccionar los 3 primeros platos que tienen mas de 300 calorias
-        List<Dish> dishesWithCaloriesGreaterThan300 = menu.stream()
-                .filter(dish -> dish.getCalories() > 300)
-                .limit(3)
+        List<Dish> filteredDish = menu.stream()
+                /**
+                 * mientras el predicado retorne true, los dishes se eliminaran, tan pronto el predicado retorna false
+                 * se detiene el procesamiento del stream y se retornan todos los elementos restantes en el stream
+                 */
+                .dropWhile(dish -> dish.getCalories() < 320)
                 .toList();
 
-        dishesWithCaloriesGreaterThan300.forEach(System.out::println);
+        filteredDish.forEach(System.out::println);
     }
 }

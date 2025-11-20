@@ -11,6 +11,7 @@ public class Sample1 {
     public static void main(String[] args) {
         List<Dish> menu = Dish.crearListaDePlatos();
 
+        // filtrando platos vegetarianos
         List<Dish> vegetarianDishes = menu.stream()
                 .filter(Dish::isVegetarian)
                 .toList();

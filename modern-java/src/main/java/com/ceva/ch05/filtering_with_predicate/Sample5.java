@@ -5,20 +5,19 @@ import com.ceva.model.Dish;
 import java.util.List;
 
 /**
- * Skipping stream elements
+ * Truncating stream with limit operation
  */
 public class Sample5 {
     public static void main(String[] args) {
+
         List<Dish> menu = Dish.crearListaDePlatos();
 
-        /**
-         * Saltamos los dos primeros platos del stream que contiene platos que superan las 800 calorias
-         */
-        List<Dish> skip = menu.stream()
-                .filter(dish -> dish.getCalories() > 800)
-                .skip(2)
+        // seleccionar los 3 primeros platos que tienen mas de 300 calorias
+        List<Dish> dishesWithCaloriesGreaterThan300 = menu.stream()
+                .filter(dish -> dish.getCalories() > 300)
+                .limit(3)
                 .toList();
 
-        skip.forEach(System.out::println);
+        dishesWithCaloriesGreaterThan300.forEach(System.out::println);
     }
 }

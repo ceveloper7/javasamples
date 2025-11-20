@@ -1,25 +1,18 @@
 package com.ceva.ch05.filtering_with_predicate;
 
-import com.ceva.model.Dish;
-
+import java.util.Arrays;
 import java.util.List;
 
 /**
- * Slicing a stream using a predicate
+ * Filtering unique elements
  */
 public class Sample2 {
-    /**
-     * Seleccionamos los platos menores a 320 calorias, la seleccion se detiene cuando encuentra un plato
-     * que no cumple el predicado
-     */
+
     public static void main(String[] args) {
-        List<Dish> menu = Dish.crearListaDePlatos();
-
-        List<Dish> filteredMenu = menu.stream()
-                .takeWhile(dish -> dish.getCalories() < 400)
-                .toList();
-
-        filteredMenu.forEach(System.out::println);
-
+        List<Integer> numbers = Arrays.asList(1,2,1,3,3,2,4);
+        numbers.stream()
+                .filter(integer -> integer % 2 == 0)
+                .distinct()
+                .forEach(System.out::println);
     }
 }

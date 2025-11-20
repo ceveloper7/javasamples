@@ -16,16 +16,16 @@ public class Sample1 {
         List<Dish> menu = Dish.crearListaDePlatos();
 
         List<String> lowCaloricDishesName =
-                // menu.stream()
+                 menu.stream()
                 // parallelStream se usa para ejecutar el codigo en paralelo usando multicore platform
-                menu.parallelStream()
-                // Encadenamiento de Operaciones:
+                //menu.parallelStream()
+                // Encadenamiento de Operaciones Intermedias:
                 // Seleccionamos platos menores a 400 calorias
                 .filter((dish)-> dish.getCalories() < 400)
                 // ordenamos la lista por calorias
                 .sorted(Comparator.comparing(Dish::getCalories))
                 // extraemos los nombre de los platos
-                .map(Dish::getName)
+                .map(Dish::getName).limit(5)
                 // guardamos los nombres de platos en una lista
                 .toList();
 

@@ -4,25 +4,39 @@ import java.util.Scanner;
 
 public class AE_TwoDimensionalArray {
     private Scanner scn = new Scanner(System.in);
-    int[][] a = new int[2][2];
-    int[][] b = new int[2][2];
-    int[][] c = new int[2][2];
+    int[][] a = new int[3][3];
+    int[][] b = new int[3][3];
+    int[][] c = new int[3][3];
     private int choice;
 
     private void setup(){
-        System.out.println("Enter elements of 2-D array A");
-        for(int r = 0; r < 2; r++){
-            for(int c = 0; c < 2; c++){
-                a[r][c] = scn.nextInt();
+        if(choice == 4){
+            System.out.println("Enter elements of array to Transpose");
+            for(int r = 0; r < 3; r++){
+                for(int c = 0; c < 3; c++){
+                    a[r][c] = scn.nextInt();
+                }
+            }
+
+            System.out.println("The elements of the matrix:");
+            printArrayResult(a);
+
+        }else{
+            System.out.println("Enter elements of 2-D array A");
+            for(int r = 0; r < 3; r++){
+                for(int c = 0; c < 3; c++){
+                    a[r][c] = scn.nextInt();
+                }
+            }
+
+            System.out.println("Enter elements of 2-D array B");
+            for(int r = 0; r < 3; r++){
+                for(int c = 0; c < 3; c++){
+                    b[r][c] = scn.nextInt();
+                }
             }
         }
 
-        System.out.println("Enter elements of 2-D array B");
-        for(int r = 0; r < 2; r++){
-            for(int c = 0; c < 2; c++){
-                b[r][c] = scn.nextInt();
-            }
-        }
     }
 
     private void printMenu(){
@@ -36,34 +50,48 @@ public class AE_TwoDimensionalArray {
         choice = scn.nextInt();
     }
 
-    private void printArrayResult(){
-        for (int row = 0; row < 2; row++){
+    private void printArrayResult(int[][] arr){
+        for (int row = 0; row < 3; row++){
             System.out.println();
-            for (int col = 0; col < 2; col++){
-                System.out.println("array[" + row + "][" + col + "]= " + c[row][col]);
+            for (int col = 0; col < 3; col++){
+                System.out.println("array[" + row + "][" + col + "]= " + arr[row][col]);
             }
         }
     }
 
     private void sumTwoArrays(){
-        for (int row = 0; row < 2; row++){
-            for(int col = 0; col < 2; col++){
+        setup();
+        for (int row = 0; row < 3; row++){
+            for(int col = 0; col < 3; col++){
                 c[row][col] = a[row][col] + b[row][col];
             }
         }
-        printArrayResult();
+        printArrayResult(c);
+    }
+
+    private void transposeArray(){
+        setup();
+        for(int row = 0; row < 3; row++){
+            for(int col = 0; col < 3; col++){
+                b[row][col] = a[col][row];
+            }
+        }
+
+        System.out.println("Elements of transpose matrix");
+        printArrayResult(b);
     }
 
     private void process(){
         switch (choice){
             case 1 -> sumTwoArrays();
+            case 4 -> transposeArray();
             default -> System.out.println("Invalid option selected");
         }
     }
 
     public static void main(String[] args) {
         AE_TwoDimensionalArray twoDimensionalArray = new AE_TwoDimensionalArray();
-        twoDimensionalArray.setup();
+        //twoDimensionalArray.setup();
         twoDimensionalArray.printMenu();
         twoDimensionalArray.process();
     }

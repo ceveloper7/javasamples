@@ -1,6 +1,6 @@
 package patterns.ch01.solid.isp;
 
-public class Car implements Vehicle{
+public class Car implements HasEngine, Vehicle{
     @Override
     public void setMove(boolean moving) {
 
@@ -9,10 +9,5 @@ public class Car implements Vehicle{
     @Override
     public boolean engineOn() {
         return true;
-    }
-
-    @Override
-    public boolean pedalsMove() {
-        throw new IllegalStateException("Not supported");
     }
 }

@@ -12,7 +12,8 @@ public class Sample1 {
         List<Dish> menu = Dish.crearListaDePlatos();
 
         // obtenemos todos los nombres de los platos
-        List<String> dishNames = menu.stream()
+        List<String> dishNames =
+                menu.stream()
                 .map(dish -> dish.getName())
                 .toList();
 

@@ -9,7 +9,8 @@ import java.util.List;
 public class Sample2 {
     public static void main(String[] args) {
         List<String> words = Arrays.asList("Modern", "Java", "In", "Action");
-        List<Integer> lengths = words.stream()
+        List<Integer> lengths =
+                words.stream()
                 .map(word -> word.length())
                 .toList();
 

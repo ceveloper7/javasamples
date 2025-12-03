@@ -12,7 +12,7 @@ import java.io.IOException;
 public class WebClient {
     public String getContent(URL url) {
         StringBuffer content = new StringBuffer();
-        try {
+        try {   
             // 1. abrimos la conexion HTTP
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setDoInput(true);

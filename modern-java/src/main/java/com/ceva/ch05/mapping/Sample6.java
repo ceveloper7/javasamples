@@ -16,11 +16,11 @@ public class Sample6 {
         List<Integer> list2 = List.of(3,4);
 
         List<int[]> pairs =
-                // Stream<[1,2,3]>
+                // Stream<1,2,3>
                 list1.stream()
                         // Stream<1,2,3>
                         .flatMap(i ->
-                                // Stream<[3,4]>
+                                // Stream<3,4>
                                 list2.stream()
                                     // Stream<[1,3],[1,4],[2,3],[2,4],[3,3],[3,4]>
                                     .map(j -> new int[]{i,j}))

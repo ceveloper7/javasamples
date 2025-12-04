@@ -15,6 +15,7 @@ public class Sample4 {
         List<String> words = Arrays.asList("Hello", "World");
         List<String> unique =
                 // Stream<String>
+                // Stream<"Hello","World">
                 words.stream()
                 // convertimos cada palabra en un Stream<String[]>
                 // Stream<["H","e","l","l","o"], ["W","o","r","l","d"]>

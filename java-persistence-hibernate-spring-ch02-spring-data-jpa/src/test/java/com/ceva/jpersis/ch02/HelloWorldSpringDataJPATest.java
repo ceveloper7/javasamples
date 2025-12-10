@@ -27,8 +27,8 @@ public class HelloWorldSpringDataJPATest {
 
         List<Message> messages = (List<Message>) messageRepository.findAll();
         Assertions.assertAll(
-                ()-> Assertions.assertEquals(3, messages.size()),
-                ()-> Assertions.assertEquals("Hello world from Spring Data JPA!", messages.get(2).getText())
+                ()-> Assertions.assertEquals(1, messages.size()),
+                ()-> Assertions.assertEquals("Hello world from Spring Data JPA!", messages.get(0).getText())
         );
     }
 

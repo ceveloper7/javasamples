@@ -34,11 +34,11 @@ public class SimpleDataSourceCfg {
     public DataSource dataSource() {
         try {
             var dataSource = new SimpleDriverDataSource();
-            Class<? extends Driver> driver = (Class<? extends Driver>) Class.forName("org.mariadb.jdbc.Driver");
+            Class<? extends Driver> driver = (Class<? extends Driver>) Class.forName(driverClassName);
             dataSource.setDriverClass(driver);
-            dataSource.setUrl("jdbc:mariadb://localhost:3306/prospring6?useSSL=false");
-            dataSource.setUsername("barcvilla");
-            dataSource.setPassword("b4000$.");
+            dataSource.setUrl(url);
+            dataSource.setUsername(username);
+            dataSource.setPassword(password);
             return dataSource;
         } catch (Exception e) {
             LOGGER.error("Simple DataSource bean cannot be created!", e);

@@ -40,8 +40,8 @@ public class PlainSingerDAO implements SingerDAO{
     }
 
     @Override
-    public Optional<String> findNameById(Long id) {
-        return Optional.empty();
+    public String findNameById(Long id) {
+        return "";
     }
 
     @Override

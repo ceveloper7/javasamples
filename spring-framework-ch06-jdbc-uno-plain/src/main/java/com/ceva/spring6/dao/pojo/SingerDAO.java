@@ -19,7 +19,7 @@ public interface SingerDAO extends CoreDAO {
 
     Set<Singer> findByFirstName(String firstName);
 
-    Optional<String> findNameById(Long id);
+    String findNameById(Long id);
 
     Optional<String> findLastNameById(Long id);
 

@@ -1,6 +1,8 @@
 package com.ceva.spring6;
 
 import com.ceva.spring6.config.SimpleDataSourceCfg;
+import com.ceva.spring6.config.SpringDatasouceCfg;
+import com.ceva.spring6.dao.pojo.SingerDAO;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -41,6 +43,18 @@ public class DataSourceConfigTest {
         DataSource dataSource = ctx.getBean("dataSource", DataSource.class);
         assertNotNull(dataSource);
         testDataSource(dataSource);
+        ctx.close();
+    }
+
+    @Test
+    public void testSpringJdbc() throws SQLException{
+        var ctx = new AnnotationConfigApplicationContext(SpringDatasouceCfg.class);
+        var dataSource = ctx.getBean("dataSource", DataSource.class);
+        assertNotNull(dataSource);
+        testDataSource(dataSource);
+
+        var singerDao = ctx.getBean("singerDao", SingerDAO.class);
+        assertEquals("John Butler", singerDao.findNameById(3L));
         ctx.close();
     }
 }

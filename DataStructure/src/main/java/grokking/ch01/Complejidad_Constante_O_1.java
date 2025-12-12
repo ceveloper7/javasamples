@@ -1,4 +1,4 @@
-package ch01;
+package grokking.ch01;
 
 public class Complejidad_Constante_O_1 {
 

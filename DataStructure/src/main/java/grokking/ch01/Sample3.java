@@ -1,4 +1,4 @@
-package ch01;
+package grokking.ch01;
 
 /**
  * Terminos no dominantes

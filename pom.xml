@@ -75,6 +75,7 @@
         <module>java-persistence-hibernate-spring-ch03</module>
         <module>java-design-patterns</module>
         <module>spring-framework-ch06-jdbc-uno-plain</module>
+        <module>spring-framework-ch06-jdbc-dos-jdbctemplate</module>
 
     </modules>
 

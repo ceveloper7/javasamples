@@ -6,6 +6,7 @@ import java.util.Optional;
 
 /**
  * Binary search algo
+ * O(log n)
  */
 public class Sample5 {
     private static int binarySearch(int[] arr, int item){

@@ -1,4 +1,4 @@
-package patterns.ch03.aaa.abstract_factory;
+package patterns.ch03.aaa.method_factory;
 
 public class VehicleFactoryTest {
     public static void main(String[] args) {

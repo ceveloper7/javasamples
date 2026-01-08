@@ -7,15 +7,6 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$/java-persistence-hibernate-spring-ch03" />
         <option name="gradleJvm" value="temurin-23" />
       </GradleProjectSettings>
-      <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/kotlin-fundamentos" />
-        <option name="gradleJvm" value="temurin-23" />
-        <option name="modules">
-          <set>
-            <option value="$PROJECT_DIR$/kotlin-fundamentos" />
-          </set>
-        </option>
-      </GradleProjectSettings>
     </option>
   </component>
 </project>

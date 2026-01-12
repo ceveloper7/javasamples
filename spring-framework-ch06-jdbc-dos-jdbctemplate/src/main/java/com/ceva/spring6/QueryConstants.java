@@ -7,7 +7,7 @@ public enum QueryConstants
 
     public static final String FIND_BY_FIRST_NAME = "select id, first_name, last_name, birth_date from SINGER where first_name = :first_name";
     public static final String NAMED_FIND_NAME = "select CONCAT(first_name , ' ' , last_name) from SINGER where id = :singerId";
-    public static final String PARAMETRIZED_FIND_NAME = "select CONCAT(first_name , ' ' , last_name) from SINGER where id = ?";
+    public static final String PARAMETRIZED_FIND_NAME = "select CONCAT(first_name , ' ' , last_name) from singer where id = ?";
     public static final String FIND_NAME = "select first_name, last_name from SINGER where id=";
 
     public static final String SIMPLE_INSERT = "insert into SINGER (first_name, last_name, birth_date) values (?, ?, ?)";

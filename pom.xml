@@ -76,6 +76,7 @@
         <module>java-design-patterns</module>
         <module>spring-framework-ch06-jdbc-uno-plain</module>
         <module>spring-framework-ch06-jdbc-dos-jdbctemplate</module>
+        <module>spring-framework-ch06-jdbc-tres-namedparameterjdbctemplate</module>
 
     </modules>
 

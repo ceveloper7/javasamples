@@ -13,6 +13,13 @@ public class Album implements Serializable{
     private String title;
     private LocalDate releaseDate;
 
+    public Album(Long id, Long singerId, String title, LocalDate releaseDate) {
+        this.id = id;
+        this.singerId = singerId;
+        this.title = title;
+        this.releaseDate = releaseDate;
+    }
+
     public Long getId() {
         return id;
     }

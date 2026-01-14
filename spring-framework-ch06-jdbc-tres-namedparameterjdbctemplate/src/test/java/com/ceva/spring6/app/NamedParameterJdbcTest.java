@@ -16,7 +16,7 @@ public class NamedParameterJdbcTest {
         var ctx = new AnnotationConfigApplicationContext(RowMapperCfg.class);
         var singerDao = ctx.getBean("singerDao", SingerDao.class);
 
-        var singers = singerDao.findAll();
+        var singers = singerDao.findAllWithAlbums();
         Assert.assertEquals(3, singers.size());
 
         singers.forEach(singer -> LOGGER.info(singer.toString()));

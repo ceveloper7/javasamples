@@ -7,7 +7,7 @@ import java.util.Optional;
 import java.util.Set;
 
 public interface SingerRepo {
-    Set<Singer> findAll();
+    List<Singer> findAll();
     List<Singer> findByFirstName(String firstName);
     Optional<String> findNameById(Long id);
     Optional<String> findLastNameById(Long id);

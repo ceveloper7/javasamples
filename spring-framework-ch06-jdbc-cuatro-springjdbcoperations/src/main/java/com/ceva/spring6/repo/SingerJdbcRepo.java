@@ -20,10 +20,12 @@ public class SingerJdbcRepo implements SingerRepo{
     private static final Logger LOGGER = LoggerFactory.getLogger(SingerJdbcRepo.class);
 
     private DataSource dataSource;
+    private SelectAllSingers selectAllSingers;
 
     @Autowired
     public void setDataSource(DataSource dataSource){
         this.dataSource = dataSource;
+        this.selectAllSingers = new SelectAllSingers(dataSource);
     }
 
     public DataSource getDataSource(){
@@ -31,8 +33,8 @@ public class SingerJdbcRepo implements SingerRepo{
     }
 
     @Override
-    public Set<Singer> findAll() {
-        return Set.of();
+    public List<Singer> findAll() {
+        return selectAllSingers.execute();
     }
 
     @Override

@@ -1,8 +1,5 @@
 package com.algo.ch01.selectionsort;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class Util {
     private static int findSmallest(int[] arr, int startIndex){

@@ -1,0 +1,6 @@
+Hash Table
+==========
+Ofrecen insercion y busqueda de elemento en tiempo constnate.
+Insercion -> Big O(1)
+BUsqueda -> Big O(1)
+Implementaciones -> HashMap / Set

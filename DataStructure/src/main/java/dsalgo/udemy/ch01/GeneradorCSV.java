@@ -1,10 +1,9 @@
-package ch02.One;
+package dsalgo.udemy.ch01;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Calendar;
 
 public class GeneradorCSV {

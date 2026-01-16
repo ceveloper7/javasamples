@@ -1,4 +1,4 @@
-package ch02.One;
+package dsalgo.udemy.ch01;
 
 public class AlgoEfficiency {
 

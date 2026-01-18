@@ -26,4 +26,16 @@ public class RepoBeanTest {
         singers.forEach(singer -> LOGGER.info(singer.toString()));
         ctx.close();
     }
+
+    @Test
+    public void testFindByNameWithMappingSqlQuery(){
+        var ctx = new AnnotationConfigApplicationContext(BasicDataSourceCfg.class, SingerJdbcRepo.class);
+        var singerRepo = ctx.getBean("singerRepo", SingerRepo.class);
+        assertNotNull(singerRepo);
+
+        var singers = singerRepo.findByFirstName("Ben");
+        assertEquals(1, singers.size());
+        LOGGER.info("Result: {}", singers.getFirst());
+        ctx.close();
+    }
 }

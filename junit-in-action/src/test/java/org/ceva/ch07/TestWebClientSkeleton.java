@@ -8,7 +8,7 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * The first stub-skeleton of a test.
+ * The first stub-skeleton of a test to verify that WebClient works
  *
  */
 public class TestWebClientSkeleton {

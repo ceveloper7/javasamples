@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
@@ -21,11 +22,13 @@ public class SingerJdbcRepo implements SingerRepo{
 
     private DataSource dataSource;
     private SelectAllSingers selectAllSingers;
+    private SelectSingerByFirstName selectSingerByFirstName;
 
     @Autowired
     public void setDataSource(DataSource dataSource){
         this.dataSource = dataSource;
         this.selectAllSingers = new SelectAllSingers(dataSource);
+        this.selectSingerByFirstName = new SelectSingerByFirstName(dataSource);
     }
 
     public DataSource getDataSource(){
@@ -39,7 +42,7 @@ public class SingerJdbcRepo implements SingerRepo{
 
     @Override
     public List<Singer> findByFirstName(String firstName) {
-        return List.of();
+        return selectSingerByFirstName.executeByNamedParam(Map.of("first_name", firstName));
     }
 
     @Override

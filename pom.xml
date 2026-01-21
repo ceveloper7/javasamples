@@ -78,6 +78,7 @@
         <module>spring-framework-ch06-jdbc-dos-jdbctemplate</module>
         <module>spring-framework-ch06-jdbc-tres-namedparameterjdbctemplate</module>
         <module>spring-framework-ch06-jdbc-cuatro-springjdbcoperations</module>
+        <module>effective-java</module>
 
     </modules>
 

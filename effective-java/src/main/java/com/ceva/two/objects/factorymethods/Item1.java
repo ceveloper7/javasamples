@@ -38,5 +38,15 @@ public class Item1 {
         credit.pay(8000);
         paypal.pay(11000);
         cash.pay(5000);
+
+        /**
+         * Ventaja 4. Segun el parametro el static factory methos retorna una implementacion concreta
+         * y el usuario no lo sabe
+         */
+        Cache cache = Cache.create(75);
+        cache.put("user1", "Carlos");
+        cache.put("user2", "Ana");
+
+        System.out.println(cache.get("user2"));
     }
 }

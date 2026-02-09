@@ -22,8 +22,8 @@ public enum QueryConstants
 
     public static final String INSERT_SINGER = "insert into singer (first_name, last_name, birth_date) values (:first_name, :last_name, :birth_date)";
 
-    public static final String INSERT_SINGER_ALBUM = "insert into ALBUM (singer_id, title, release_date) values (:singer_id, :title, :release_date)";
+    public static final String INSERT_SINGER_ALBUM = "insert into album (singer_id, title, release_date) values (:singer_id, :title, :release_date)";
     public static final String FIND_SINGER_ALBUM = "SELECT s.id, s.first_name, s.last_name, s.birth_date" +
-            ", a.id AS album_id, a.title, a.release_date FROM SINGER s " +
-            "LEFT JOIN ALBUM a ON s.id = a.singer_id";
+            ", a.id AS album_id, a.title, a.release_date FROM singer s " +
+            "LEFT JOIN album a ON s.id = a.singer_id";
 }

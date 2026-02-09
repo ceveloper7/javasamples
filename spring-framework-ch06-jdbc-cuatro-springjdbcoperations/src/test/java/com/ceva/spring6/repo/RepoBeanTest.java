@@ -1,6 +1,7 @@
 package com.ceva.spring6.repo;
 
 import com.ceva.spring6.config.BasicDataSourceCfg;
+import com.ceva.spring6.record.Album;
 import com.ceva.spring6.record.Singer;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -8,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -70,6 +72,33 @@ public class RepoBeanTest {
         var singers = singerRepo.findByFirstName("Ed");
         assertEquals(1, singers.size());
         LOGGER.info("Result: {}", singers.get(0));
+
+        ctx.close();
+    }
+
+    @Test
+    public void testInsertAlbumsWithBatchSqlUpdate(){
+        var ctx = new AnnotationConfigApplicationContext(BasicDataSourceCfg.class, SingerJdbcRepo.class);
+        var singerRepo = ctx.getBean("singerRepo", SingerRepo.class);
+        assertNotNull(singerRepo);
+
+        var singer = new Singer(null,"Paul","McCartney",
+                LocalDate.of(1940,9, 16),
+                new HashSet<>());
+
+        var album = new Album(null, null,"RAM", LocalDate.of(1970,8, 18));
+        singer.albums().add(album);
+
+        album = new Album(null, null, "Wild Life",
+                LocalDate.of(1971,4, 20)
+        );
+
+        singer.albums().add(album);
+        singerRepo.insertWithAlbum(singer);
+
+        var singers = singerRepo.findAllWithAlbums();
+        assertEquals(5, singers.size());
+        singers.forEach(s -> LOGGER.info(s.toString()));
 
         ctx.close();
     }

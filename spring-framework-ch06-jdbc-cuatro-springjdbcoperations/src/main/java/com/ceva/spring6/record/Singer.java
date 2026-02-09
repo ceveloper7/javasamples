@@ -1,7 +1,5 @@
 package com.ceva.spring6.record;
 
-import com.ceva.spring6.model.Album;
-
 import java.time.LocalDate;
 import java.util.Set;
 

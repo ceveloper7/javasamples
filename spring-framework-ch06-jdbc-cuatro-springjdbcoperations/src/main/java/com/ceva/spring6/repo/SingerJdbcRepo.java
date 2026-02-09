@@ -4,13 +4,15 @@ import com.ceva.spring6.record.Singer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
 
 /**
  * Spring bean singerRepo. Implementaciones del paquete repo
@@ -24,6 +26,7 @@ public class SingerJdbcRepo implements SingerRepo{
     private SelectAllSingers selectAllSingers;
     private SelectSingerByFirstName selectSingerByFirstName;
     private UpdateSinger updateSinger;
+    private InsertSinger insertSinger;
 
 
     @Autowired
@@ -32,6 +35,7 @@ public class SingerJdbcRepo implements SingerRepo{
         this.selectAllSingers = new SelectAllSingers(dataSource);
         this.selectSingerByFirstName = new SelectSingerByFirstName(dataSource);
         this.updateSinger = new UpdateSinger(dataSource);
+        this.insertSinger = new InsertSinger(dataSource);
     }
 
     public DataSource getDataSource(){
@@ -70,7 +74,16 @@ public class SingerJdbcRepo implements SingerRepo{
 
     @Override
     public void insert(Singer singer) {
-
+        // keyHolder instance que contendra el id generado
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        insertSinger.updateByNamedParam(
+                Map.of("first_name", singer.firstName(),
+                        "last_name", singer.lastName(),
+                        "birth_date", singer.birthDate()), keyHolder
+        );
+        // insertado el registro obtenemos el id generado
+        var generatedId = Objects.requireNonNull(keyHolder.getKey()).longValue();
+        LOGGER.info("New singer  {} {} inserted with id {}  ", singer.firstName(), singer.lastName(), generatedId);
     }
 
     @Override

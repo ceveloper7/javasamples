@@ -56,4 +56,21 @@ public class RepoBeanTest {
         LOGGER.info("Result: {}", singers.get(0));
         ctx.close();
     }
+
+    @Test
+    public void testInsertWithSqlUpdate(){
+        var ctx = new AnnotationConfigApplicationContext(BasicDataSourceCfg.class, SingerJdbcRepo.class);
+        var singerRepo = ctx.getBean("singerRepo", SingerRepo.class);
+        assertNotNull(singerRepo);
+
+        var singer = new Singer(null,"Ed","Sheeran", LocalDate.of(1991,2, 17),
+                Set.of());
+        singerRepo.insert(singer);
+
+        var singers = singerRepo.findByFirstName("Ed");
+        assertEquals(1, singers.size());
+        LOGGER.info("Result: {}", singers.get(0));
+
+        ctx.close();
+    }
 }

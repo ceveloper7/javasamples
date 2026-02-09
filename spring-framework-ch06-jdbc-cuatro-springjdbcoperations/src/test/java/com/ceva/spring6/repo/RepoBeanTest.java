@@ -7,7 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -36,6 +38,22 @@ public class RepoBeanTest {
         var singers = singerRepo.findByFirstName("Ben");
         assertEquals(1, singers.size());
         LOGGER.info("Result: {}", singers.getFirst());
+        ctx.close();
+    }
+
+    @Test
+    public void testUpdateWithSqlUpdate(){
+        var ctx = new AnnotationConfigApplicationContext(BasicDataSourceCfg.class, SingerJdbcRepo.class);
+        var singerRepo = ctx.getBean("singerRepo", SingerRepo.class);
+        assertNotNull(singerRepo);
+
+        Singer singer = new Singer(1L, "John C.", "Mayer", LocalDate.of(1977,10,6),
+                Set.of());
+        singerRepo.update(singer);
+
+        var singers = singerRepo.findByFirstName("John C.");
+        assertEquals(1, singers.size());
+        LOGGER.info("Result: {}", singers.get(0));
         ctx.close();
     }
 }

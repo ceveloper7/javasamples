@@ -13,7 +13,7 @@ import java.util.Optional;
 import java.util.Set;
 
 /**
- * Spring bean singerRepo
+ * Spring bean singerRepo. Implementaciones del paquete repo
  */
 @Repository("singerRepo")
 public class SingerJdbcRepo implements SingerRepo{
@@ -23,12 +23,15 @@ public class SingerJdbcRepo implements SingerRepo{
     private DataSource dataSource;
     private SelectAllSingers selectAllSingers;
     private SelectSingerByFirstName selectSingerByFirstName;
+    private UpdateSinger updateSinger;
+
 
     @Autowired
     public void setDataSource(DataSource dataSource){
         this.dataSource = dataSource;
         this.selectAllSingers = new SelectAllSingers(dataSource);
         this.selectSingerByFirstName = new SelectSingerByFirstName(dataSource);
+        this.updateSinger = new UpdateSinger(dataSource);
     }
 
     public DataSource getDataSource(){
@@ -72,7 +75,13 @@ public class SingerJdbcRepo implements SingerRepo{
 
     @Override
     public void update(Singer singer) {
-
+        updateSinger.updateByNamedParam(
+                Map.of("first_name", singer.firstName(),
+                        "last_name", singer.lastName(),
+                        "birth_date", singer.birthDate(),
+                        "id", singer.id())
+        );
+        LOGGER.info("Existing singer updated with id: " + singer.id());
     }
 
     @Override

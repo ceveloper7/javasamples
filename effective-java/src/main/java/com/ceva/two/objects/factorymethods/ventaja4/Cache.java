@@ -1,4 +1,4 @@
-package com.ceva.two.objects.factorymethods;
+package com.ceva.two.objects.factorymethods.ventaja4;
 
 public abstract class Cache {
 

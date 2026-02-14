@@ -1,4 +1,4 @@
-package com.ceva.two.objects.factorymethods;
+package com.ceva.two.objects.factorymethods.ventaja2;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

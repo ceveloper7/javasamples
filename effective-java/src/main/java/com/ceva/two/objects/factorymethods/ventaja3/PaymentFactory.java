@@ -1,4 +1,4 @@
-package com.ceva.two.objects.factorymethods;
+package com.ceva.two.objects.factorymethods.ventaja3;
 
 public class PaymentFactory {
 

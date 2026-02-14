@@ -1,5 +1,13 @@
 package com.ceva.two.objects.factorymethods;
 
+import com.ceva.two.objects.factorymethods.ventaja2.Color;
+import com.ceva.two.objects.factorymethods.ventaja3.PaymentFactory;
+import com.ceva.two.objects.factorymethods.ventaja3.PaymentMethod;
+import com.ceva.two.objects.factorymethods.ventaja4.Cache;
+import com.ceva.two.objects.factorymethods.ventaja5.PaymentProcessor;
+import com.ceva.two.objects.factorymethods.ventaja5.PaymentProcessors;
+import com.ceva.two.objects.factorymethods.ventaja5.PaypalProvider;
+
 import java.math.BigInteger;
 import java.util.Random;
 
@@ -48,5 +56,15 @@ public class Item1 {
         cache.put("user2", "Ana");
 
         System.out.println(cache.get("user2"));
+
+        /**
+         * Ventaja 5: Un static factory method puede devolver objetos cuya implementacion concreta no existia
+         * cuando se escribio el codigo original
+         */
+        // registramos un provider
+        PaymentProcessors.registerProvider("Paypal", new PaypalProvider());
+        // el cliente pide un procesador
+        PaymentProcessor processor = PaymentProcessors.getProcessor("Paypal");
+        processor.process(1000);
     }
 }

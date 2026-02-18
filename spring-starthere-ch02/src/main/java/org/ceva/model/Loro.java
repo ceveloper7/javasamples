@@ -18,6 +18,7 @@ public class Loro {
         this.name = name;
     }
 
+    // se ejecuta luego de ejecutarse el constructor de Loro
     @PostConstruct
     public void init(){
         this.name = "Rigoberta";

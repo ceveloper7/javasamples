@@ -1,7 +1,7 @@
 Concepto Big O
 ==============
 Describe el ritmo con el que crece la complejidad o el tiempo de ejecucion de un algoritmo.
-Lo importante es el ritmo de crecimiento y no el numerode instrucciones ejecutadas.
+Lo importante es el ritmo de crecimiento y no el numero de instrucciones ejecutadas.
 
 Big O(n) -> siendo n el numero de elementos.
 

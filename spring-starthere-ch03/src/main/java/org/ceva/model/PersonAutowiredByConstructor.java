@@ -12,6 +12,10 @@ public class PersonAutowiredByConstructor {
 
     private final Loro loro;
 
+    /**
+     * Cuando Spring crea el bean de tipo PersonAutowiredByConstructor, llama al constructor anotado con @Autowired
+     * y le inyecta el bean Loro que existe en el spring context y lo pasa al constrcutor como un valor de parametro
+     */
     @Autowired
     public PersonAutowiredByConstructor(Loro loro){
         this.loro = loro;

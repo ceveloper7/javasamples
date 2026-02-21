@@ -10,7 +10,10 @@ import java.util.List;
  * sobre un objeto Apple
  */
 public class FilterAppleStrategies {
-
+    /**
+     * El comportamiento del metodo depende del objeto ApplePredicate
+     *
+     */
     public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate predicate){
         List<Apple> result = new ArrayList<>();
         for (Apple apple : inventory)

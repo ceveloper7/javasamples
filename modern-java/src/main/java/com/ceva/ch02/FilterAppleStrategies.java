@@ -11,8 +11,8 @@ import java.util.List;
  */
 public class FilterAppleStrategies {
     /**
+     * Parametrizacion del comportamiento
      * El comportamiento del metodo depende del objeto ApplePredicate
-     *
      */
     public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate predicate){
         List<Apple> result = new ArrayList<>();

@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
+    // Marcamos al metodo testAdd() como un Junit Test
     @Test
     public void testAdd(){
         Calculator calc = new Calculator();

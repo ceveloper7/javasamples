@@ -8,6 +8,11 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * Las expresiones Lambda vienen a solucionar lo tedioso que es parametrizar el codigo y pasarlo
+ * a un metodo
+ */
+
 public class LambadTest1 {
 
 
@@ -16,6 +21,8 @@ public class LambadTest1 {
         Comparator<Apple> comparator = (Apple a1, Apple a2) -> a1.getWeight() - a2.getWeight();
         Apple.appleInventory().sort(comparator);
         System.out.println(Apple.appleInventory());
+
+
     }
 
     public static List<Apple> filter(List<Apple> inventory, AppleBooleanPredicate predicate){

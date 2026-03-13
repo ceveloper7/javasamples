@@ -5,6 +5,8 @@ import com.ceva.model.Apple;
 import java.util.Comparator;
 import java.util.List;
 
+
+
 public class AppleComparatorUsingAnonymousClass {
     public static void main(String[] args) {
         List<Apple> inventory = Apple.appleInventory();

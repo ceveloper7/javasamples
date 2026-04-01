@@ -27,7 +27,7 @@ public class CommentService {
     //@Autowired
     public CommentService(CommentRepository commentRepository,
                           // especificamos la implementacion que queremos que sea injectada EmailCommentNotificationProxy
-                          @Qualifier("EMAIL") CommentNotificationProxy commentNotificationProxy){
+                          @Qualifier("PUSH") CommentNotificationProxy commentNotificationProxy){
         this.commentRepository = commentRepository;
         this.commentNotificationProxy = commentNotificationProxy;
     }

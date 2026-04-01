@@ -4,6 +4,7 @@ import com.ceva.model.Apple;
 import com.ceva.model.Color;
 import com.ceva.model.Util;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
@@ -11,6 +12,21 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class LambdaTest2 {
+
+    private void testingPredicate(){
+        List<String> names = new ArrayList<>();
+        names.add("Pedro");
+        names.add("Jorge");
+        names.add("Mario");
+        names.add("");
+
+        Predicate<String> nonEmptyStringPredicate = (String s) -> !s.isEmpty();
+        List<String> nonEmpty = Util.filter(names, nonEmptyStringPredicate);
+
+        for (String s : nonEmpty){
+            System.out.println(s);
+        }
+    }
 
     private void printRedApplesUsingPredicate(){
         Predicate<Apple> applePredicate = (Apple apple) -> apple.getColor() == Color.RED;
@@ -34,5 +50,7 @@ public class LambdaTest2 {
         // t.printRedApplesUsingPredicate();
         t.printAppleDataUsingConsumer();
         t.printDataUsingFunction();
+
+        t.testingPredicate();
     }
 }

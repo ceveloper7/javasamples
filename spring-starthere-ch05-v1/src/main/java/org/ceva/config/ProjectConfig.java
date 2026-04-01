@@ -4,6 +4,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = {"com.ceva.services","com.ceva.repositories"})
+@ComponentScan(basePackages = {"org.ceva.services","org.ceva.repositories"})
 public class ProjectConfig {
 }

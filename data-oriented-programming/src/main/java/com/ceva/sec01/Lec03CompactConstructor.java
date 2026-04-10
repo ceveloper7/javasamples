@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 public class Lec03CompactConstructor {
     private static final Logger log = LoggerFactory.getLogger(Lec03CompactConstructor.class);
 
-    // canonical constructor
+    // Compact constructor es una forma abreviada de canonical constructor
     record Person(String firstName, String lastName){
 
         // business requeriments: we need to uppercase the lastName

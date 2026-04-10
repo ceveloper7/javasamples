@@ -8,7 +8,7 @@ public class Lec01RecordBasicsDemo {
 
     record Person(String firstName, String lastName){
 
-        // we can not declare an extra fiel in a record, but we can add instance methods
+        // we can not declare an extra field in a record, but we can add instance methods
         public String fullName(){
             return this.firstName + " " + this.lastName;
         }

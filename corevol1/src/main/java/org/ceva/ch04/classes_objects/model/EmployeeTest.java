@@ -18,5 +18,8 @@ public class EmployeeTest {
         for(Employee e : staff){
             System.out.println(e);
         }
+
+        // declarando variables locales con var
+        var empleado = new Employee("Pedro Jimenez", 100000, 2000, 10, 1);
     }
 }

@@ -65,6 +65,7 @@ public class Employee  extends Person implements Cloneable, Comparable<Employee>
         super("");
         //name = "";
         salary = 0;
+        // evitamos el nullpointer exception
         hireDay = LocalDate.now();
     }
 

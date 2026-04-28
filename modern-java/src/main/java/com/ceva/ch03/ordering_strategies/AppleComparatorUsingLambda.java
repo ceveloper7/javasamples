@@ -9,7 +9,7 @@ public class AppleComparatorUsingLambda {
 
     private void usingLambdaExpressionV1(List<Apple> inventory){
 
-        inventory.sort((Apple a1, Apple a2) -> a1.getWeight()-a2.getWeight());
+        inventory.sort((Apple a1, Apple a2) -> a1.getWeight()- a2.getWeight());
         System.out.println(inventory);
     }
 

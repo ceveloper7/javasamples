@@ -16,7 +16,8 @@ public class ComposingPredicates {
 
         Predicate<Apple> redApple = (apple)-> apple.getColor() == Color.RED;
 
-        Predicate<Apple> redAndHeavyApples = redApple
+        Predicate<Apple> redAndHeavyApples =
+                redApple
                 .and(apple -> apple.getWeight() > 80);
 
         System.out.println(Util.filter(inventory, redAndHeavyApples));;
@@ -26,7 +27,8 @@ public class ComposingPredicates {
         List<Apple> inventory = Apple.appleInventory();
 
         Predicate<Apple> redApple = (apple)-> apple.getColor() == Color.RED;
-        Predicate<Apple> redAndHeavyOrBlueApples = redApple
+        Predicate<Apple> redAndHeavyOrBlueApples =
+                redApple
                 .and((apple) -> apple.getWeight() > 80)
                 .or((apple) -> apple.getColor() == Color.BLUE);
 

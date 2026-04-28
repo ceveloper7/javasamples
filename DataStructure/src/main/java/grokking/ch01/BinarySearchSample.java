@@ -1,15 +1,11 @@
 package grokking.ch01;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-
 /**
  * Binary search algo
  * O(log n)
  * [3,4,6,8]
  */
-public class    Sample5 {
+public class BinarySearchSample {
     private static int binarySearch(int[] arr, int item){
         /**
          * low & high mantiene registro que parte de la lista buscaremos

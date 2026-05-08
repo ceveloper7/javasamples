@@ -6,7 +6,7 @@ package grokking.ch03;
 public class Sample1 {
     private void printNumber(int n){
         System.out.println(n);
-        // Caso base
+        // Caso base. cuando el numero es menor igual a 1, termina la recursion.
         if(n <= 1)
             return;
         else
@@ -16,6 +16,6 @@ public class Sample1 {
 
     public static void main(String[] args) {
         Sample1 sample1 = new Sample1();
-        sample1.printNumber(5);
+        sample1.printNumber(3);
     }
 }

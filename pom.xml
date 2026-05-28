@@ -82,6 +82,7 @@
         <module>hexagon-arch</module>
         <module>java-web-internals-ch01-CalcProtocol</module>
         <module>java.web.internals.ch01.calcserver</module>
+        <module>hexagon-arch-ch02</module>
 
     </modules>
 

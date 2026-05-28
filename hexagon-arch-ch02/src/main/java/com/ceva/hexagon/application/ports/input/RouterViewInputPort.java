@@ -1,8 +1,9 @@
-package com.ceva.hexagon.ch01.application.ports.input;
+package com.ceva.hexagon.application.ports.input;
 
-import com.ceva.hexagon.ch01.application.ports.output.RouterViewOutputPort;
-import com.ceva.hexagon.ch01.application.usecases.RouterViewUseCase;
-import com.ceva.hexagon.ch01.domain.Router;
+import com.ceva.hexagon.application.ports.output.RouterViewOutputPort;
+import com.ceva.hexagon.application.usecases.RouterViewUseCase;
+import com.ceva.hexagon.domain.entity.Router;
+import com.ceva.hexagon.domain.service.RouterSearch;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -23,6 +24,6 @@ public class RouterViewInputPort implements RouterViewUseCase {
     @Override
     public List<Router> getRouters(Predicate<Router> filter) {
         var routers = routerViewOutputPort.fetchRouters();
-        return Router.retrieveRouter(routers, filter);
+        return RouterSearch.retrieveRouter(routers, filter);
     }
 }

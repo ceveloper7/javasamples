@@ -25,7 +25,9 @@ public class Sample1 {
                 // ordenamos la lista por calorias
                 .sorted(Comparator.comparing(Dish::getCalories))
                 // extraemos los nombre de los platos
-                .map(Dish::getName).limit(5)
+                .map(Dish::getName)
+                         // seleccionamos solo os tres primeros
+                         .limit(3)
                 // guardamos los nombres de platos en una lista
                 .toList();
 

@@ -1,4 +1,4 @@
-package com.ceva.hexagon.ch01.domain;
+package com.ceva.hexagon.domain.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,11 +36,7 @@ public class Router {
     }
     // end constraint method
 
-    public static List<Router> retrieveRouter(List<Router> routers, Predicate<Router> predicate){
-        return routers.stream()
-                .filter(predicate)
-                .collect(Collectors.<Router>toList());
-    }
+
 
     public static List<Router> checkRouter(RouterType routerType, List<Router> routes){
         var routerList = new ArrayList<Router>();

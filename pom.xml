@@ -80,9 +80,10 @@
         <module>spring-framework-ch06-jdbc-cuatro-springjdbcoperations</module>
         <module>effective-java</module>
         <module>hexagon-arch</module>
-        <module>java-web-internals-ch01-CalcProtocol</module>
-        <module>java.web.internals.ch01.calcserver</module>
+        <module>java-web-internals-one-CalcProtocol</module>
+        <module>java.web.internals.one.calcserver</module>
         <module>hexagon-arch-ch02</module>
+        <module>java.web.internal.one.calcclient</module>
 
     </modules>
 

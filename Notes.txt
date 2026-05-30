@@ -1,3 +1,38 @@
+Compilacion Aplicacion Cliente Servidor Calculator
+
+Compilacion modulo java-web-internals-one-CalcProtocol
+javac -d bin java-web-internals-one-CalcProtocol/src/main/java/com/ceva/io/*.java java-web-internals-one-CalcProtocol/src/main/java/module-info.java
+
+jar --create --file libs/protocol.jar -C bin .
+
+Compilacion modulo java.web.internals.one.calcserver
+javac \
+  --module-path libs/java-web-internals-one-CalcProtocol.jar \
+  -d bin \
+  java.web.internals.one.calcserver/src/main/java/module-info.java \
+  java.web.internals.one.calcserver/src/main/java/com/ceva/calcserver/ServerClass.java
+
+jar --create --file libs/java.web.internals.one.calcserver.jar --main-class com.ceva.calcserver.ServerClass -C bin .
+
+ejecucion del server
+java --module-path libs/java-web-internals-one-CalcProtocol.jar:libs/java.web.internals.one.calcserver.jar \
+-m java.web.internals.one.calcserver/com.ceva.calcserver.ServerClass
+
+Compilacion del modulo: java.web.internal
+javac --module-path libs/java-web-internals-one-CalcProtocol.jar \
+       -d bin \
+       java.web.internal.one.calcclient/src/main/java/com/ceva/ClientClass.java \
+       java.web.internal.one.calcclient/src/main/java/module-info.java
+
+jar --create --file libs/java.web.internal.one.calcclient.jar --main-class com.ceva.ClientClass -C bin .
+
+Ejecucion client
+java --module-path \
+       libs/java-web-internals-one-CalcProtocol.jar:libs/java.web.internals.one.calcserver.jar:libs/java.web.internal.one.calcclient.jar \
+       -m java.web.internal.one.calcclient/com.ceva.ClientClass
+
+
+
 DB
 ==
 isConnected()

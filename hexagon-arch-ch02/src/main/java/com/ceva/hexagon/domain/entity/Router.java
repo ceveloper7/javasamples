@@ -30,13 +30,11 @@ public class Router {
         return p -> p.getRouterType() == RouterType.EDGE;
     }
 
-    // router type check embebido en la entidad
+    // router type check incrustado en la entidad
     public static Predicate<Router> filterRouterByType(RouterType routerType){
         return routerType.equals(RouterType.CORE) ? isCore() : isEdge();
     }
     // end constraint method
-
-
 
     public static List<Router> checkRouter(RouterType routerType, List<Router> routes){
         var routerList = new ArrayList<Router>();

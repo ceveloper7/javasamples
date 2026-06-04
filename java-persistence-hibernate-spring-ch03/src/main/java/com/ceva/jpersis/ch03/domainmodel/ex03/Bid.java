@@ -1,7 +1,7 @@
 package com.ceva.jpersis.ch03.domainmodel.ex03;
 
 /**
- * Bidirectional Navigation Between Objects: Bid#Item
+ * Asociacion Unidireccional (N a 1)
  * Many to one relationship -> User can make many bids for each item
  */
 public class Bid {

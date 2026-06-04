@@ -6,8 +6,12 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+/**
+ * Clase de servicio que expone comportamiento que puede ser utilizado por otros hexàgonos.
+ */
 public class RouterSearch {
 
+    // metodo servicio de dominio
     public static List<Router> retrieveRouter(List<Router> routers, Predicate<Router> predicate){
         return routers.stream()
                 .filter(predicate)

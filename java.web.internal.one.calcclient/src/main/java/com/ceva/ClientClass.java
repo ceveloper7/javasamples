@@ -37,7 +37,7 @@ public class ClientClass {
             // step 5 enviamos el objeto Request
             ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
             out.writeObject(req);
-            // step 6 Recivimos una respuesta
+            // step 6 Recibimos una respuesta
             ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
             Response rep = (Response)in.readObject();
             // step 7 Imprimir el resultado.

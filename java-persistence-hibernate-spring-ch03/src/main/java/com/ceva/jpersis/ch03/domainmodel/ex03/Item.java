@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Bidirectional Navigation Between Objects: Item#Bid
+ * Bidirectional Navigation Between Objects: Item#Bid (Agregacion 1 a 0....*)
  * One to Many relationship -> One Item can have many Bids
  */
 public class Item {

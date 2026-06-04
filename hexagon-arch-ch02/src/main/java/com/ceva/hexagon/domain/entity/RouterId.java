@@ -14,7 +14,7 @@ public class RouterId {
         return new RouterId(UUID.fromString(id));
     }
 
-    public static RouterId withoutId(String id){
+    public static RouterId withoutId(){
         return new RouterId(UUID.randomUUID());
     }
 

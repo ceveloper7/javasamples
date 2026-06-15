@@ -1,9 +1,13 @@
 package com.ceva.hexagon.domain.entity;
 
+import com.ceva.hexagon.domain.valueobjects.IP;
+import com.ceva.hexagon.domain.valueobjects.Network;
+import com.ceva.hexagon.domain.valueobjects.RouterId;
+import com.ceva.hexagon.domain.valueobjects.RouterType;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public class Router {
 
@@ -11,6 +15,7 @@ public class Router {
     private final RouterType routerType;
     // identidad
     private final RouterId routerId;
+    private Switch networkSwitch;
 
     public Router(RouterType routerType, RouterId routerId){
         this.routerType = routerType;
@@ -35,6 +40,18 @@ public class Router {
         return routerType.equals(RouterType.CORE) ? isCore() : isEdge();
     }
     // end constraint method
+
+    public void addNetworkToSwitch(Network network){
+        this.networkSwitch = networkSwitch.addNetwork(network, this);
+    }
+
+    public Network createNetwork(IP address, String name, int cidr){
+        return new Network(address, name, cidr);
+    }
+
+    public List<Network> retrieveNetworks(){
+        return networkSwitch.getNetworks();
+    }
 
     public static List<Router> checkRouter(RouterType routerType, List<Router> routes){
         var routerList = new ArrayList<Router>();

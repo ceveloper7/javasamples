@@ -2,8 +2,8 @@ package com.ceva.hexagon.framework.output.file;
 
 import com.ceva.hexagon.application.ports.output.RouterViewOutputPort;
 import com.ceva.hexagon.domain.entity.Router;
-import com.ceva.hexagon.domain.entity.RouterId;
-import com.ceva.hexagon.domain.entity.RouterType;
+import com.ceva.hexagon.domain.valueobjects.RouterId;
+import com.ceva.hexagon.domain.valueobjects.RouterType;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

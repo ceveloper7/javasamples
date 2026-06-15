@@ -3,7 +3,7 @@ package com.ceva.hexagon.framework.input.stdin;
 import com.ceva.hexagon.application.ports.input.RouterViewInputPort;
 import com.ceva.hexagon.application.usecases.RouterViewUseCase;
 import com.ceva.hexagon.domain.entity.Router;
-import com.ceva.hexagon.domain.entity.RouterType;
+import com.ceva.hexagon.domain.valueobjects.RouterType;
 import com.ceva.hexagon.framework.output.file.RouterViewFileAdapter;
 
 import java.util.List;

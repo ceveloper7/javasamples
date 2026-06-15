@@ -1,4 +1,4 @@
-package com.ceva.hexagon.domain.entity;
+package com.ceva.hexagon.domain.valueobjects;
 
 /**
  * Value object

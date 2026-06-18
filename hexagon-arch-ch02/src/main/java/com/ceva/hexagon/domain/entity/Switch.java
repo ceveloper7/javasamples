@@ -21,10 +21,19 @@ public class Switch {
         this.address = address;
     }
 
+    /**
+     * Network estan directamente conectado a Switch. addNetwork permite agregar Network objeto a Switch
+     * @param network
+     * @param router
+     * @return
+     */
     public Switch addNetwork(Network network, Router router) {
+        // obtenemos las Network existentes del objeto Router
         List<Network> newNetworks = new ArrayList<>(router.retrieveNetworks());
+        // agregamos la nueva Network a la lista existente.
         newNetworks.add(network);
 
+        // creamos un nuevo objeto Switch con la Network agregada.
         return new Switch(this.switchType, this.switchId, newNetworks, this.address);
     }
 

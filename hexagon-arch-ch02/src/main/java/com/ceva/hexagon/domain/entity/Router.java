@@ -9,12 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
+/**
+ * Aggregate Root Router Object
+ * Al colocar los metodos createNetwork() y addNetworkToList delegamos la responsabilidad
+ * de manejar todos los objetos bajo el contexto de Router.
+ */
 public class Router {
 
     // continuidad
     private final RouterType routerType;
     // identidad
     private final RouterId routerId;
+    // representamos al Switch conectado al Router
     private Switch networkSwitch;
 
     public Router(RouterType routerType, RouterId routerId){
@@ -41,12 +47,12 @@ public class Router {
     }
     // end constraint method
 
-    public void addNetworkToSwitch(Network network){
-        this.networkSwitch = networkSwitch.addNetwork(network, this);
-    }
-
     public Network createNetwork(IP address, String name, int cidr){
         return new Network(address, name, cidr);
+    }
+
+    public void addNetworkToSwitch(Network network){
+        this.networkSwitch = networkSwitch.addNetwork(network, this);
     }
 
     public List<Network> retrieveNetworks(){

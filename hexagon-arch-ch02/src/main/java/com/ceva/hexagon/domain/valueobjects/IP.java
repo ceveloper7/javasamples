@@ -5,6 +5,7 @@ public class IP {
     private final Protocol protocol;
 
     public IP(String address, Protocol protocol){
+        // prevenimos la construccion erronea del objeto
         if (address == null)
             throw new IllegalArgumentException("Null IP address");
         this.address = address;

@@ -1,6 +1,7 @@
 package com.ceva.hexagon.domain.service;
 
 import com.ceva.hexagon.domain.entity.Router;
+import com.ceva.hexagon.domain.specification.CIDRSpecification;
 import com.ceva.hexagon.domain.valueobjects.IP;
 import com.ceva.hexagon.domain.valueobjects.Network;
 
@@ -10,8 +11,6 @@ import com.ceva.hexagon.domain.valueobjects.Network;
  */
 public class NetworkOperation {
 
-    private final int MINIMUN_ALLOWED_CIDR = 8;
-
     /**
      * Metodo responsable para crear un nuevo Network Object y agregarlo a Switch que
      * esta linked a un Router
@@ -20,8 +19,13 @@ public class NetworkOperation {
      * Verificar si el Network address ya ha sido utilizado en algun Network object
      */
     public void createNewNetwork(Router router, IP address, String name, int cidr){
-        if(cidr < MINIMUN_ALLOWED_CIDR)
-            throw new IllegalArgumentException("CIDR is below " + MINIMUN_ALLOWED_CIDR);
+
+        var cidrSpec = new CIDRSpecification();
+        // business rule 1: Limits the minimum CIDR allowed for the creation of new network
+        if(cidrSpec.isSatisfiedBy(cidr))
+            throw new IllegalArgumentException("CIDR is below " + CIDRSpecification.MINIMUN_ALLOWED_CIDR);
+
+        // business rule 2: Verify if the network address is not already used
         if(isNetworkAvailable(router, address, cidr))
             throw new IllegalArgumentException("Address already exist");
 
